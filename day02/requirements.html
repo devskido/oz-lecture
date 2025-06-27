@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 02 Requirements</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            background: #f5f5f5;
+        }
+        
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #333;
+            border-bottom: 3px solid #e84393;
+            padding-bottom: 10px;
+        }
+        
+        h2 {
+            color: #e84393;
+            margin-top: 30px;
+        }
+        
+        h3 {
+            color: #495057;
+        }
+        
+        code {
+            background: #f8f9fa;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        pre {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            border-left: 4px solid #e84393;
+        }
+        
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 25px;
+        }
+        
+        li {
+            margin: 8px 0;
+        }
+        
+        strong {
+            color: #e84393;
+        }
+        
+        .back-btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 20px;
+            background: #6c757d;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        
+        .back-btn:hover {
+            background: #5a6268;
+        }
+        
+        .highlight {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #ffc107;
+            margin: 20px 0;
+        }
+        
+        .warning {
+            background: #f8d7da;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #dc3545;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Day 02 - Requirements</h1>
+        
+        <h2>과제 개요</h2>
+        <p>이번 수업에서 HTML 폼 태그(<code>&lt;form&gt;</code>, <code>&lt;input&gt;</code>, <code>&lt;button&gt;</code>, <code>&lt;checkbox&gt;</code>, <code>&lt;radio&gt;</code>, <code>&lt;select&gt;</code>, <code>&lt;option&gt;</code>)와 HTML5의 새로운 입력 타입(<code>email</code>, <code>date</code>, <code>number</code>, <code>range</code>)에 대해 배웠습니다. 이번 과제는 이러한 태그들을 활용하여 <strong>사용자 등록 폼 페이지</strong>를 만드는 것입니다. 이 과제를 통해 폼 요소의 구조, 속성, 사용자 입력 처리 방법을 익히고, 실제 웹사이트에서 사용하는 인터랙티브 폼을 구현합니다.</p>
+        
+        <h2>과제 요구사항</h2>
+        
+        <h3>1. 사용자 등록 폼 페이지 (register.html)</h3>
+        <ul>
+            <li>페이지 제목은 <code>&lt;title&gt;</code> 태그를 사용하여 "User Registration Form"으로 설정하세요.</li>
+            <li><code>&lt;h1&gt;</code> 태그를 사용하여 "User Registration"을 페이지 제목으로 표시하세요.</li>
+            <li><code>&lt;form&gt;</code> 태그를 사용하여 사용자 정보를 입력받는 폼을 작성하세요.
+                <ul>
+                    <li><code>action</code> 속성은 임시로 <code>#</code>로 설정하세요. (예: <code>action="#"</code>)</li>
+                    <li><code>method</code> 속성은 <code>POST</code>로 설정하세요.</li>
+                </ul>
+            </li>
+        </ul>
+        
+        <h3>폼에 포함할 입력 요소들</h3>
+        <ul>
+            <li><strong>텍스트 입력</strong>: 사용자의 이름(<code>&lt;input type="text"&gt;</code>)</li>
+            <li><strong>이메일 입력</strong>: 사용자의 이메일 주소(<code>&lt;input type="email"&gt;</code>)</li>
+            <li><strong>비밀번호 입력</strong>: 비밀번호(<code>&lt;input type="password"&gt;</code>)</li>
+            <li><strong>생년월일 입력</strong>: 생년월일(<code>&lt;input type="date"&gt;</code>)</li>
+            <li><strong>나이 입력</strong>: 나이(<code>&lt;input type="number"&gt;</code>, 최소값 18, 최대값 100)</li>
+            <li><strong>만족도 입력</strong>: 서비스 만족도(<code>&lt;input type="range"&gt;</code>, 범위 1~10)</li>
+            <li><strong>성별 선택</strong>: 라디오 버튼(<code>&lt;input type="radio"&gt;</code>)으로 "Male", "Female", "Other" 선택</li>
+            <li><strong>관심사 선택</strong>: 체크박스(<code>&lt;input type="checkbox"&gt;</code>)으로 최소 3개 옵션(예: "Coding", "Gaming", "Reading")</li>
+            <li><strong>국가 선택</strong>: 드롭다운 메뉴(<code>&lt;select&gt;</code>와 <code>&lt;option&gt;</code>)로 최소 5개 국가(예: "South Korea", "USA", "Japan", "China", "UK")</li>
+            <li><strong>제출 버튼</strong>: 폼 제출용 버튼(<code>&lt;button type="submit"&gt;</code>)</li>
+            <li><strong>초기화 버튼</strong>: 폼 초기화용 버튼(<code>&lt;button type="reset"&gt;</code>)</li>
+        </ul>
+        
+        <div class="highlight">
+            <p><strong>중요:</strong> 각 입력 요소에는 <code>&lt;label&gt;</code> 태그를 사용하여 명확한 설명을 추가하세요.<br>
+            예: <code>&lt;label for="name"&gt;Name:&lt;/label&gt; &lt;input type="text" id="name" name="name"&gt;</code></p>
+            <p>입력 요소는 <code>&lt;p&gt;</code> 또는 <code>&lt;div&gt;</code> 태그로 구분하여 가독성을 높이세요.</p>
+        </div>
+        
+        <h3>2. 파일 구조</h3>
+        <p>프로젝트 폴더를 생성하고, 아래와 같은 구조로 파일을 구성하세요:</p>
+        
+        <pre>user-form/
+├── register.html</pre>
+        
+        <p>CSS나 JavaScript는 사용하지 않습니다. HTML만으로 구현하세요.</p>
+        
+        <h2>주의사항</h2>
+        
+        <div class="warning">
+            <ul>
+                <li><strong>HTML 구조 준수</strong>: HTML 파일은 <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code>, <code>&lt;body&gt;</code> 태그를 포함한 올바른 구조를 가져야 하며, <code>&lt;!DOCTYPE html&gt;</code> 선언을 파일 상단에 추가하세요.</li>
+                <li><strong>폼 속성 설정</strong>: <code>&lt;form&gt;</code> 태그의 <code>action</code>과 <code>method</code> 속성을 정확히 설정하세요. 입력 요소의 <code>name</code> 속성을 반드시 추가하여 서버로 전송될 데이터를 구분할 수 있도록 하세요.</li>
+                <li><strong>입력 요소 속성</strong>: 각 <code>&lt;input&gt;</code> 태그에 적절한 <code>type</code> 속성을 사용하고, <code>id</code>와 <code>name</code> 속성을 추가하세요. HTML5 입력 타입(<code>email</code>, <code>date</code>, <code>number</code>, <code>range</code>)은 브라우저의 기본 유효성 검사를 활용하도록 설정하세요.</li>
+                <li><strong>접근성 고려</strong>: <code>&lt;label&gt;</code> 태그를 사용하여 모든 입력 요소에 설명을 제공하고, <code>for</code> 속성과 <code>&lt;input&gt;</code>의 <code>id</code>를 연결하세요. 체크박스와 라디오 버튼에도 개별 <code>&lt;label&gt;</code>을 사용하세요.</li>
+            </ul>
+        </div>
+        
+        <h2>도전 과제 (선택)</h2>
+        
+        <div class="highlight">
+            <p><strong>기본 과제를 완료한 학생들은 아래 도전 과제를 수행하여 HTML5 시맨틱 태그와 멀티미디어 태그를 활용한 페이지 개선에 도전하세요.</strong></p>
+        </div>
+        
+        <h3>1. 시맨틱 태그 활용</h3>
+        <ul>
+            <li><code>&lt;header&gt;</code>: 페이지 상단에 로고(텍스트 또는 이미지)와 페이지 제목("User Registration")을 포함하세요.</li>
+            <li><code>&lt;nav&gt;</code>: 최소 3개의 메뉴 항목(예: "Home", "Register", "About")을 포함한 내비게이션 바를 추가하세요. 링크는 실제 동작하지 않아도 됩니다(예: <code>&lt;a href="#"&gt;</code>).</li>
+            <li><code>&lt;section&gt;</code>: 폼을 하나의 <code>&lt;section&gt;</code> 태그로 감싸고, 섹션 제목(예: <code>&lt;h2&gt;Registration Form&lt;/h2&gt;</code>)을 추가하세요.</li>
+            <li><code>&lt;article&gt;</code>: 폼 아래에 사용자 등록의 목적이나 안내 문구를 설명하는 <code>&lt;article&gt;</code> 섹션을 추가하세요.</li>
+            <li><code>&lt;aside&gt;</code>: 페이지 측면에 관련 정보(예: "Registration Tips" 또는 "Contact Support")를 포함하는 사이드바를 추가하세요.</li>
+            <li><code>&lt;footer&gt;</code>: 페이지 하단에 저작권 정보(예: "© 2025 Your Website")와 연락처 링크를 추가하세요.</li>
+        </ul>
+        
+        <h3>2. 멀티미디어 태그 활용</h3>
+        <ul>
+            <li><code>&lt;svg&gt;</code>: <code>&lt;header&gt;</code> 또는 <code>&lt;aside&gt;</code>에 간단한 SVG 그래픽(예: 원, 사각형, 로고 모양)을 추가하세요.</li>
+            <li><code>&lt;canvas&gt;</code>: <code>&lt;article&gt;</code> 또는 <code>&lt;aside&gt;</code>에 <code>&lt;canvas&gt;</code> 요소를 추가하고, 간단한 텍스트나 도형을 표시하세요.</li>
+            <li><code>&lt;video&gt;</code> 또는 <code>&lt;audio&gt;</code>: <code>&lt;footer&gt;</code> 또는 <code>&lt;aside&gt;</code>에 샘플 미디어를 추가하세요.</li>
+        </ul>
+        
+        <h3>3. 도전 과제 파일 구조</h3>
+        <pre>user-form/
+├── register.html
+└── media/
+    └── sample.mp4 (선택 사항)</pre>
+        
+        <a href="./" class="back-btn">← Day 02로 돌아가기</a>
+    </div>
+</body>
+</html>
