@@ -3,111 +3,397 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Day 02 - HTML Forms</title>
+    <title>Day 02 - HTML Forms & Semantic Tags</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         body {
             font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
             line-height: 1.6;
+            background: linear-gradient(135deg, #fd79a8 0%, #e84393 100%);
+            min-height: 100vh;
         }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            min-height: 100vh;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        
+        header {
+            background: linear-gradient(135deg, #00b894 0%, #00cec9 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        
+        .breadcrumb {
+            background: #2d3436;
+            padding: 15px 20px;
+            color: white;
+        }
+        
+        .breadcrumb a {
+            color: #fd79a8;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+        
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        
+        .nav-container {
+            background: #2d3436;
+            padding: 0;
+        }
+        
+        .day-nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .day-link {
+            display: flex;
+            align-items: center;
+            padding: 15px 25px;
+            color: white;
+            text-decoration: none;
+            border-right: 1px solid #636e72;
+            transition: all 0.3s ease;
+        }
+        
+        .day-link.active {
+            background: #e84393;
+        }
+        
+        .day-link:hover {
+            background: #fd79a8;
+        }
+        
+        .day-link:last-child {
+            border-right: none;
+        }
+        
+        .main-content {
+            padding: 40px;
+        }
+        
         h1 {
-            color: #333;
-            border-bottom: 2px solid #007bff;
-            padding-bottom: 10px;
+            color: #2d3436;
+            margin-bottom: 30px;
+            font-size: 2.2em;
+            text-align: center;
         }
-        .project-card {
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 20px;
-            margin: 20px 0;
-            background-color: #f8f9fa;
+        
+        .project-overview {
+            background: #f1f2f6;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 5px solid #e84393;
         }
-        .project-links {
-            margin: 15px 0;
+        
+        .project-overview h2 {
+            color: #2d3436;
+            margin-bottom: 15px;
         }
-        .project-links a {
-            display: inline-block;
-            margin: 5px 10px 5px 0;
-            padding: 8px 16px;
-            background-color: #007bff;
-            color: white;
-            text-decoration: none;
-            border-radius: 4px;
-        }
-        .project-links a:hover {
-            background-color: #0056b3;
-        }
+        
         .description {
-            color: #666;
-            font-style: italic;
+            color: #636e72;
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            line-height: 1.7;
         }
-        .nav-link {
-            display: inline-block;
-            margin: 10px 0;
-            padding: 10px 20px;
-            background-color: #6c757d;
-            color: white;
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+        
+        .project-card {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .project-card h3 {
+            color: #2d3436;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+        
+        .project-card p {
+            color: #636e72;
+            margin-bottom: 20px;
+        }
+        
+        .project-links {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        
+        .btn {
+            padding: 12px 20px;
             text-decoration: none;
-            border-radius: 4px;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-align: center;
+            display: inline-block;
         }
-        .nav-link:hover {
-            background-color: #545b62;
+        
+        .btn-primary {
+            background: #e84393;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #fd79a8;
+        }
+        
+        .btn-secondary {
+            background: #636e72;
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background: #2d3436;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: #e84393;
+            border: 2px solid #e84393;
+        }
+        
+        .btn-outline:hover {
+            background: #e84393;
+            color: white;
+        }
+        
+        .features-section {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 30px 0;
+        }
+        
+        .features-section h3 {
+            color: #2d3436;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minMax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .feature-item {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .feature-item h4 {
+            color: #e84393;
+            margin-bottom: 10px;
+        }
+        
+        .feature-item ul {
+            list-style: none;
+            color: #636e72;
+        }
+        
+        .feature-item ul li {
+            margin: 8px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .feature-item ul li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #00b894;
+            font-weight: bold;
+        }
+        
+        footer {
+            background: #2d3436;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .day-nav {
+                flex-direction: column;
+            }
+            
+            .day-link {
+                border-right: none;
+                border-bottom: 1px solid #636e72;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .main-content {
+                padding: 20px;
+            }
         }
     </style>
 </head>
 <body>
-    <a href="../" class="nav-link">← Back to Main</a>
-    
-    <h1>Day 02: HTML Forms & Semantic Tags</h1>
-    
-    <div class="project-card">
-        <h2>User Registration Form</h2>
-        <p class="description">
-            HTML 폼 태그와 HTML5 입력 타입을 활용한 사용자 등록 폼 페이지입니다.
-            시맨틱 태그와 멀티미디어 요소도 포함하여 현대적인 웹 페이지를 구현했습니다.
-        </p>
+    <div class="container">
+        <header>
+            <h1>📝 Day 02: HTML Forms & Semantic Tags</h1>
+            <p>폼 요소와 시맨틱 태그로 현대적인 웹 페이지 만들기</p>
+        </header>
         
-        <div class="project-links">
-            <a href="user-form/register.html">Registration Form</a>
-            <a href="requirements">과제 요구사항</a>
-        </div>
+        <nav class="breadcrumb">
+            <a href="../">🏠 홈</a> > 
+            <span>Day 02</span>
+        </nav>
         
-        <h3>구현 내용</h3>
-        <ul>
-            <li>📝 기본 과제
-                <ul>
-                    <li>사용자 등록 폼 (이름, 이메일, 비밀번호)</li>
-                    <li>HTML5 입력 타입 (date, number, range, email)</li>
-                    <li>라디오 버튼 (성별 선택)</li>
-                    <li>체크박스 (관심사 선택)</li>
-                    <li>드롭다운 메뉴 (국가 선택)</li>
-                    <li>폼 제출/초기화 버튼</li>
-                </ul>
-            </li>
-            <li>🎯 도전 과제
-                <ul>
-                    <li>시맨틱 태그: header, nav, section, article, aside, footer</li>
-                    <li>SVG 그래픽: 로고 및 아이콘</li>
-                    <li>Canvas 요소: 동적 그래픽</li>
-                    <li>멀티미디어: audio, video 태그</li>
-                </ul>
-            </li>
-        </ul>
-
-        <h3>학습 목표</h3>
-        <ul>
-            <li>HTML 폼 요소의 구조와 속성 이해</li>
-            <li>HTML5 새로운 입력 타입 활용</li>
-            <li>시맨틱 태그로 의미 있는 문서 구조 만들기</li>
-            <li>멀티미디어 요소 통합</li>
-            <li>접근성을 고려한 폼 디자인</li>
-        </ul>
+        <nav class="nav-container">
+            <div class="day-nav">
+                <a href="../day01/" class="day-link">Day 01 - HTML 기초</a>
+                <a href="../day02/" class="day-link active">Day 02 - HTML Forms</a>
+                <a href="#" class="day-link" style="opacity: 0.5;">Day 03 - CSS 기초</a>
+                <a href="#" class="day-link" style="opacity: 0.5;">Day 04 - CSS 레이아웃</a>
+            </div>
+        </nav>
+        
+        <main class="main-content">
+            <div class="project-overview">
+                <h2>📋 사용자 등록 폼 프로젝트</h2>
+                <p class="description">
+                    HTML5의 다양한 입력 요소와 시맨틱 태그를 활용하여 현대적이고 접근성을 고려한 
+                    사용자 등록 폼을 제작합니다. 폼 유효성 검사, 멀티미디어 요소, 그리고 의미 있는 
+                    문서 구조까지 포함한 완성도 높은 웹 페이지를 경험해보세요.
+                </p>
+            </div>
+            
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>📝 Registration Form</h3>
+                    <p>완전한 기능을 갖춘 사용자 등록 폼입니다. 
+                       HTML5의 새로운 입력 타입과 유효성 검사를 체험해보세요.</p>
+                    
+                    <div class="project-links">
+                        <a href="user-form/register.html" class="btn btn-primary">폼 체험하기</a>
+                    </div>
+                    
+                    <h4>기본 폼 요소:</h4>
+                    <ul>
+                        <li>텍스트, 이메일, 비밀번호 입력</li>
+                        <li>날짜 및 숫자 입력</li>
+                        <li>범위 슬라이더</li>
+                        <li>라디오 버튼 및 체크박스</li>
+                        <li>드롭다운 선택</li>
+                        <li>폼 제출/초기화 버튼</li>
+                    </ul>
+                </div>
+                
+                <div class="project-card">
+                    <h3>🎨 시맨틱 & 멀티미디어</h3>
+                    <p>의미 있는 HTML5 시맨틱 태그와 다양한 멀티미디어 요소가 
+                       통합된 현대적인 웹 페이지 구조를 확인해보세요.</p>
+                    
+                    <div class="project-links">
+                        <a href="user-form/register.html" class="btn btn-primary">고급 기능 보기</a>
+                    </div>
+                    
+                    <h4>고급 기능:</h4>
+                    <ul>
+                        <li>Header, Nav, Section 구조</li>
+                        <li>Article, Aside 콘텐츠</li>
+                        <li>SVG 그래픽 및 로고</li>
+                        <li>Canvas 동적 그래픽</li>
+                        <li>Audio, Video 멀티미디어</li>
+                        <li>반응형 디자인</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="features-section">
+                <h3>🎯 학습 성과 및 스킬</h3>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <h4>📋 폼 마스터</h4>
+                        <ul>
+                            <li>HTML5 입력 타입 활용</li>
+                            <li>폼 유효성 검사</li>
+                            <li>접근성 고려 설계</li>
+                            <li>라벨 및 필드셋 활용</li>
+                        </ul>
+                    </div>
+                    <div class="feature-item">
+                        <h4>🏗️ 구조 설계</h4>
+                        <ul>
+                            <li>시맨틱 HTML5 태그</li>
+                            <li>의미 있는 문서 구조</li>
+                            <li>SEO 친화적 마크업</li>
+                            <li>스크린 리더 호환성</li>
+                        </ul>
+                    </div>
+                    <div class="feature-item">
+                        <h4>🎨 미디어 통합</h4>
+                        <ul>
+                            <li>SVG 벡터 그래픽</li>
+                            <li>Canvas 요소 활용</li>
+                            <li>오디오 및 비디오</li>
+                            <li>상호작용 요소</li>
+                        </ul>
+                    </div>
+                    <div class="feature-item">
+                        <h4>💡 모던 웹</h4>
+                        <ul>
+                            <li>반응형 레이아웃</li>
+                            <li>CSS Grid & Flexbox</li>
+                            <li>트랜지션 효과</li>
+                            <li>사용자 경험 향상</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin: 40px 0;">
+                <a href="requirements" class="btn btn-outline">📝 과제 요구사항 보기</a>
+                <a href="../day01/" class="btn btn-secondary">⬅️ Day 01 돌아가기</a>
+                <a href="#" class="btn btn-secondary" style="opacity: 0.5;">➡️ Day 03 (준비중)</a>
+            </div>
+        </main>
+        
+        <footer>
+            <p>&copy; 2025 IH Bootcamp Day 02 | HTML Forms & Semantic Tags</p>
+            <p>사용자 등록 폼 및 시맨틱 웹 프로젝트</p>
+        </footer>
     </div>
-    
-    <footer style="margin-top: 40px; text-align: center; color: #888; border-top: 1px solid #ddd; padding-top: 20px;">
-        <p>IH Bootcamp Day 02 과제 | HTML Forms & Semantic Tags</p>
-    </footer>
 </body>
 </html>
