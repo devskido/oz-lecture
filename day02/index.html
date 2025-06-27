@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 02 - HTML Forms</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #333;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+        }
+        .project-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            background-color: #f8f9fa;
+        }
+        .project-links {
+            margin: 15px 0;
+        }
+        .project-links a {
+            display: inline-block;
+            margin: 5px 10px 5px 0;
+            padding: 8px 16px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        .project-links a:hover {
+            background-color: #0056b3;
+        }
+        .description {
+            color: #666;
+            font-style: italic;
+        }
+        .nav-link {
+            display: inline-block;
+            margin: 10px 0;
+            padding: 10px 20px;
+            background-color: #6c757d;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        .nav-link:hover {
+            background-color: #545b62;
+        }
+    </style>
+</head>
+<body>
+    <a href="../" class="nav-link">← Back to Main</a>
+    
+    <h1>Day 02: HTML Forms & Semantic Tags</h1>
+    
+    <div class="project-card">
+        <h2>User Registration Form</h2>
+        <p class="description">
+            HTML 폼 태그와 HTML5 입력 타입을 활용한 사용자 등록 폼 페이지입니다.
+            시맨틱 태그와 멀티미디어 요소도 포함하여 현대적인 웹 페이지를 구현했습니다.
+        </p>
+        
+        <div class="project-links">
+            <a href="user-form/register.html">Registration Form</a>
+            <a href="requirements">과제 요구사항</a>
+        </div>
+        
+        <h3>구현 내용</h3>
+        <ul>
+            <li>📝 기본 과제
+                <ul>
+                    <li>사용자 등록 폼 (이름, 이메일, 비밀번호)</li>
+                    <li>HTML5 입력 타입 (date, number, range, email)</li>
+                    <li>라디오 버튼 (성별 선택)</li>
+                    <li>체크박스 (관심사 선택)</li>
+                    <li>드롭다운 메뉴 (국가 선택)</li>
+                    <li>폼 제출/초기화 버튼</li>
+                </ul>
+            </li>
+            <li>🎯 도전 과제
+                <ul>
+                    <li>시맨틱 태그: header, nav, section, article, aside, footer</li>
+                    <li>SVG 그래픽: 로고 및 아이콘</li>
+                    <li>Canvas 요소: 동적 그래픽</li>
+                    <li>멀티미디어: audio, video 태그</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h3>학습 목표</h3>
+        <ul>
+            <li>HTML 폼 요소의 구조와 속성 이해</li>
+            <li>HTML5 새로운 입력 타입 활용</li>
+            <li>시맨틱 태그로 의미 있는 문서 구조 만들기</li>
+            <li>멀티미디어 요소 통합</li>
+            <li>접근성을 고려한 폼 디자인</li>
+        </ul>
+    </div>
+    
+    <footer style="margin-top: 40px; text-align: center; color: #888; border-top: 1px solid #ddd; padding-top: 20px;">
+        <p>IH Bootcamp Day 02 과제 | HTML Forms & Semantic Tags</p>
+    </footer>
+</body>
+</html>

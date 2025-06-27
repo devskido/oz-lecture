@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            border-bottom: 3px solid #007bff;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #555;
+            margin-top: 30px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        input[type="radio"], input[type="checkbox"] {
+            width: auto;
+            margin-right: 10px;
+        }
+        .radio-group, .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+        .radio-item, .checkbox-item {
+            display: flex;
+            align-items: center;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin: 5px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        button[type="reset"] {
+            background-color: #6c757d;
+        }
+        button[type="reset"]:hover {
+            background-color: #545b62;
+        }
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 30px;
+        }
+        .range-display {
+            text-align: center;
+            font-weight: bold;
+            color: #007bff;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        nav {
+            background-color: #343a40;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 8px 12px;
+            border-radius: 3px;
+        }
+        nav a:hover {
+            background-color: #495057;
+        }
+        aside {
+            background-color: #e9ecef;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #343a40;
+            color: white;
+            border-radius: 5px;
+        }
+        .svg-logo {
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="svg-logo">
+            <svg width="100" height="100">
+                <circle cx="50" cy="50" r="40" stroke="#007bff" stroke-width="3" fill="#e3f2fd" />
+                <text x="50" y="55" text-anchor="middle" font-family="Arial" font-size="12" fill="#007bff">FORM</text>
+            </svg>
+        </div>
+        <h1>User Registration</h1>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#register">Register</a>
+        <a href="#about">About</a>
+    </nav>
+
+    <div class="container">
+        <!-- Registration Form Section -->
+        <section>
+            <h2>Registration Form</h2>
+            
+            <!-- User Registration Form -->
+            <form action="#" method="POST">
+                <!-- Name Input -->
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <!-- Email Input -->
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <!-- Password Input -->
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+
+                <!-- Birth Date Input -->
+                <div class="form-group">
+                    <label for="birthdate">Birth Date:</label>
+                    <input type="date" id="birthdate" name="birthdate" required>
+                </div>
+
+                <!-- Age Input -->
+                <div class="form-group">
+                    <label for="age">Age:</label>
+                    <input type="number" id="age" name="age" min="18" max="100" required>
+                </div>
+
+                <!-- Satisfaction Range -->
+                <div class="form-group">
+                    <label for="satisfaction">Service Satisfaction (1-10):</label>
+                    <input type="range" id="satisfaction" name="satisfaction" min="1" max="10" value="5" oninput="document.getElementById('satisfactionValue').textContent = this.value">
+                    <div class="range-display">Current Value: <span id="satisfactionValue">5</span></div>
+                </div>
+
+                <!-- Gender Radio Buttons -->
+                <div class="form-group">
+                    <label>Gender:</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" id="male" name="gender" value="male" required>
+                            <label for="male">Male</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="female" name="gender" value="female" required>
+                            <label for="female">Female</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="other" name="gender" value="other" required>
+                            <label for="other">Other</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interests Checkboxes -->
+                <div class="form-group">
+                    <label>Interests (Select at least one):</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="coding" name="interests" value="coding">
+                            <label for="coding">Coding</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="gaming" name="interests" value="gaming">
+                            <label for="gaming">Gaming</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="reading" name="interests" value="reading">
+                            <label for="reading">Reading</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="music" name="interests" value="music">
+                            <label for="music">Music</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="sports" name="interests" value="sports">
+                            <label for="sports">Sports</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Country Selection -->
+                <div class="form-group">
+                    <label for="country">Country:</label>
+                    <select id="country" name="country" required>
+                        <option value="">-- Select a Country --</option>
+                        <option value="kr">South Korea</option>
+                        <option value="us">USA</option>
+                        <option value="jp">Japan</option>
+                        <option value="cn">China</option>
+                        <option value="uk">United Kingdom</option>
+                        <option value="de">Germany</option>
+                        <option value="fr">France</option>
+                    </select>
+                </div>
+
+                <!-- Submit and Reset Buttons -->
+                <div class="button-group">
+                    <button type="submit">Register</button>
+                    <button type="reset">Reset Form</button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Information Article -->
+        <article>
+            <h2>Why Register?</h2>
+            <p>Registering allows you to access exclusive features including:</p>
+            <ul>
+                <li>Personalized content and recommendations</li>
+                <li>Access to premium features</li>
+                <li>Community participation and networking</li>
+                <li>Regular updates and newsletters</li>
+                <li>Priority customer support</li>
+            </ul>
+            
+            <!-- Canvas Element -->
+            <canvas id="welcomeCanvas" width="300" height="100" style="border: 1px solid #ddd; margin: 20px 0;">
+                <!-- This canvas could display welcome graphics with JavaScript -->
+                Your browser does not support the canvas element.
+            </canvas>
+        </article>
+    </div>
+
+    <!-- Sidebar -->
+    <aside>
+        <h3>Registration Tips</h3>
+        <ul>
+            <li>Use a strong password with at least 8 characters</li>
+            <li>Double-check your email address for accuracy</li>
+            <li>Select interests that match your preferences</li>
+            <li>All required fields must be completed</li>
+        </ul>
+        
+        <h3>Need Help?</h3>
+        <p>Contact our support team:</p>
+        <ul>
+            <li>Email: support@example.com</li>
+            <li>Phone: +1-234-567-8900</li>
+            <li>Live Chat: Available 24/7</li>
+        </ul>
+
+        <!-- Sample Audio -->
+        <h3>Welcome Message</h3>
+        <audio controls>
+            <source src="https://www.w3schools.com/html/horse.ogg" type="audio/ogg">
+            <source src="https://www.w3schools.com/html/horse.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </aside>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 User Registration System | All Rights Reserved</p>
+        <p>Contact: info@example.com | Phone: +1-234-567-8900</p>
+        
+        <!-- Sample Video -->
+        <h3>Registration Tutorial</h3>
+        <video controls width="300">
+            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+            <source src="https://www.w3schools.com/html/mov_bbb.ogg" type="video/ogg">
+            Your browser does not support the video element.
+        </video>
+    </footer>
+
+    <script>
+        // Simple canvas drawing
+        const canvas = document.getElementById('welcomeCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Draw welcome text
+        ctx.font = '20px Arial';
+        ctx.fillStyle = '#007bff';
+        ctx.textAlign = 'center';
+        ctx.fillText('Welcome to Registration!', canvas.width/2, 30);
+        
+        // Draw a simple graphic
+        ctx.beginPath();
+        ctx.arc(canvas.width/2, 70, 20, 0, 2 * Math.PI);
+        ctx.fillStyle = '#28a745';
+        ctx.fill();
+        ctx.stroke();
+    </script>
+</body>
+</html>
