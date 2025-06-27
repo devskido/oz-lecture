@@ -3,387 +3,147 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IH Bootcamp - HTML 과제</title>
+    <title>IH Bootcamp - Day 1~40</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
         body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
-        }
-        
-        .container {
+            font-family: Arial, sans-serif;
             max-width: 1200px;
             margin: 0 auto;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            overflow: hidden;
+            padding: 20px;
+            background: #f5f5f5;
         }
         
-        header {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            color: white;
-            padding: 40px 20px;
+        h1 {
             text-align: center;
+            color: #333;
+            margin-bottom: 40px;
         }
         
-        header h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-        
-        header p {
-            font-size: 1.2em;
-            opacity: 0.9;
-        }
-        
-        .nav-container {
-            background: #2c3e50;
-            padding: 0;
-        }
-        
-        .day-nav {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
+        .days-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
         }
         
         .day-link {
-            display: flex;
-            align-items: center;
-            padding: 20px 30px;
+            display: block;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             text-decoration: none;
-            border-right: 1px solid #34495e;
-            transition: all 0.3s ease;
+            border-radius: 10px;
+            text-align: center;
             font-weight: bold;
-        }
-        
-        .day-link:last-child {
-            border-right: none;
+            font-size: 18px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
         
         .day-link:hover {
-            background: #3498db;
-            transform: translateY(-2px);
-        }
-        
-        .day-number {
-            background: #e74c3c;
-            color: white;
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 15px;
-            font-size: 14px;
-            font-weight: bold;
-        }
-        
-        .main-content {
-            padding: 40px;
-        }
-        
-        .intro-section {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-        
-        .intro-section h2 {
-            color: #2c3e50;
-            font-size: 2em;
-            margin-bottom: 20px;
-        }
-        
-        .intro-section p {
-            color: #666;
-            font-size: 1.1em;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-        
-        .project-card {
-            background: #f8f9fa;
-            border-radius: 10px;
-            padding: 30px;
-            border-left: 5px solid #3498db;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .project-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
         }
         
-        .project-card h3 {
-            color: #2c3e50;
-            margin-bottom: 15px;
-            font-size: 1.5em;
+        .day-link.completed {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
         }
         
-        .project-card p {
-            color: #666;
-            margin-bottom: 20px;
-            line-height: 1.6;
+        .day-link.upcoming {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%);
+            color: #333;
         }
         
-        .project-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
+        .section {
+            margin: 40px 0;
         }
         
-        .day-badge {
-            background: #e74c3c;
-            color: white;
-            padding: 5px 12px;
-            border-radius: 15px;
-            font-size: 12px;
-            font-weight: bold;
-        }
-        
-        .project-status {
-            background: #27ae60;
-            color: white;
-            padding: 5px 12px;
-            border-radius: 15px;
-            font-size: 12px;
-        }
-        
-        .project-links {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-        
-        .btn {
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            text-align: center;
-            display: inline-block;
-        }
-        
-        .btn-primary {
-            background: #3498db;
-            color: white;
-        }
-        
-        .btn-primary:hover {
-            background: #2980b9;
-        }
-        
-        .btn-secondary {
-            background: #95a5a6;
-            color: white;
-        }
-        
-        .btn-secondary:hover {
-            background: #7f8c8d;
-        }
-        
-        .skills-section {
-            background: #ecf0f1;
-            padding: 40px;
-            margin-top: 40px;
-            border-radius: 10px;
-        }
-        
-        .skills-section h2 {
-            text-align: center;
-            color: #2c3e50;
-            margin-bottom: 30px;
-        }
-        
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-        
-        .skill-item {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            text-align: center;
-        }
-        
-        .skill-item h4 {
-            color: #2c3e50;
-            margin-bottom: 10px;
-        }
-        
-        .skill-item ul {
-            list-style: none;
-            color: #666;
-        }
-        
-        .skill-item ul li {
-            margin: 5px 0;
+        .section h2 {
+            color: #555;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
         }
         
         footer {
-            background: #2c3e50;
-            color: white;
             text-align: center;
-            padding: 30px;
-        }
-        
-        @media (max-width: 768px) {
-            .day-nav {
-                flex-direction: column;
-            }
-            
-            .day-link {
-                border-right: none;
-                border-bottom: 1px solid #34495e;
-            }
-            
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            header h1 {
-                font-size: 2em;
-            }
+            margin-top: 50px;
+            padding: 20px;
+            background: #333;
+            color: white;
+            border-radius: 10px;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>🎓 IH Bootcamp</h1>
-            <p>HTML 기초부터 고급까지 단계별 학습 과정</p>
-        </header>
-        
-        <nav class="nav-container">
-            <div class="day-nav">
-                <a href="day01/" class="day-link">
-                    <span class="day-number">01</span>
-                    <span>HTML 기초 & CERN 웹사이트</span>
-                </a>
-                <a href="day02/" class="day-link">
-                    <span class="day-number">02</span>
-                    <span>HTML Forms & 시맨틱 태그</span>
-                </a>
-                <a href="#" class="day-link" style="opacity: 0.5;">
-                    <span class="day-number">03</span>
-                    <span>CSS 기초 (준비중)</span>
-                </a>
-                <a href="#" class="day-link" style="opacity: 0.5;">
-                    <span class="day-number">04</span>
-                    <span>CSS 레이아웃 (준비중)</span>
-                </a>
-            </div>
-        </nav>
-        
-        <main class="main-content">
-            <section class="intro-section">
-                <h2>HTML 마스터 여정에 오신 것을 환영합니다!</h2>
-                <p>각 단계별로 체계적인 학습을 통해 웹 개발의 기초를 확실히 다져보세요. 
-                   실습 위주의 프로젝트로 실무에 바로 적용할 수 있는 스킬을 배워갑니다.</p>
-            </section>
-            
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-meta">
-                        <span class="day-badge">DAY 01</span>
-                        <span class="project-status">완료</span>
-                    </div>
-                    <h3>🌐 CERN 웹사이트 재현</h3>
-                    <p>세계 최초의 웹사이트를 직접 구현하면서 HTML의 역사와 기본 구조를 학습합니다. 
-                       하이퍼링크의 개념과 기본 태그들의 활용법을 익힙니다.</p>
-                    
-                    <div class="project-links">
-                        <a href="day01/" class="btn btn-primary">프로젝트 보기</a>
-                        <a href="day01/cern-website/" class="btn btn-secondary">CERN 사이트</a>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-meta">
-                        <span class="day-badge">DAY 02</span>
-                        <span class="project-status">완료</span>
-                    </div>
-                    <h3>📝 사용자 등록 폼</h3>
-                    <p>HTML5의 다양한 입력 요소와 시맨틱 태그를 활용한 현대적인 폼을 제작합니다. 
-                       멀티미디어 요소까지 통합하여 완성도 높은 페이지를 구현합니다.</p>
-                    
-                    <div class="project-links">
-                        <a href="day02/" class="btn btn-primary">프로젝트 보기</a>
-                        <a href="day02/user-form/register.html" class="btn btn-secondary">폼 체험</a>
-                    </div>
-                </div>
-            </div>
-            
-            <section class="skills-section">
-                <h2>📚 학습 내용</h2>
-                <div class="skills-grid">
-                    <div class="skill-item">
-                        <h4>Day 01 - HTML 기초</h4>
-                        <ul>
-                            <li>HTML 문서 구조</li>
-                            <li>텍스트 태그 활용</li>
-                            <li>하이퍼링크 연결</li>
-                            <li>리스트 태그 사용</li>
-                        </ul>
-                    </div>
-                    <div class="skill-item">
-                        <h4>Day 02 - 폼 & 시맨틱</h4>
-                        <ul>
-                            <li>폼 요소와 입력 타입</li>
-                            <li>HTML5 새 기능</li>
-                            <li>시맨틱 태그 구조</li>
-                            <li>멀티미디어 통합</li>
-                        </ul>
-                    </div>
-                    <div class="skill-item">
-                        <h4>Day 03 - CSS 기초</h4>
-                        <ul>
-                            <li>CSS 선택자</li>
-                            <li>스타일 속성</li>
-                            <li>박스 모델</li>
-                            <li>컬러 & 타이포그래피</li>
-                        </ul>
-                    </div>
-                    <div class="skill-item">
-                        <h4>Day 04 - CSS 레이아웃</h4>
-                        <ul>
-                            <li>Flexbox 레이아웃</li>
-                            <li>Grid 시스템</li>
-                            <li>반응형 디자인</li>
-                            <li>애니메이션 효과</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-        </main>
-        
-        <footer>
-            <p>&copy; 2025 IH Bootcamp | HTML 마스터 과정</p>
-            <p>개발자: devskido | 이메일: rkdsim18@gmail.com</p>
-        </footer>
+    <h1>🎓 IH Bootcamp - 40일 완성 과정</h1>
+    
+    <div class="section">
+        <h2>Week 1-2: HTML 기초 (Day 1-10)</h2>
+        <div class="days-grid">
+            <a href="day01/" class="day-link completed">Day 01<br>HTML 기초</a>
+            <a href="day02/" class="day-link completed">Day 02<br>HTML Forms</a>
+            <a href="day03/" class="day-link upcoming">Day 03<br>CSS 기초</a>
+            <a href="day04/" class="day-link upcoming">Day 04<br>CSS 레이아웃</a>
+            <a href="day05/" class="day-link upcoming">Day 05<br>Flexbox</a>
+            <a href="day06/" class="day-link upcoming">Day 06<br>Grid</a>
+            <a href="day07/" class="day-link upcoming">Day 07<br>반응형</a>
+            <a href="day08/" class="day-link upcoming">Day 08<br>애니메이션</a>
+            <a href="day09/" class="day-link upcoming">Day 09<br>Bootstrap</a>
+            <a href="day10/" class="day-link upcoming">Day 10<br>프로젝트 1</a>
+        </div>
     </div>
+    
+    <div class="section">
+        <h2>Week 3-4: JavaScript 기초 (Day 11-20)</h2>
+        <div class="days-grid">
+            <a href="day11/" class="day-link upcoming">Day 11<br>JS 기초</a>
+            <a href="day12/" class="day-link upcoming">Day 12<br>변수&함수</a>
+            <a href="day13/" class="day-link upcoming">Day 13<br>조건&반복</a>
+            <a href="day14/" class="day-link upcoming">Day 14<br>배열&객체</a>
+            <a href="day15/" class="day-link upcoming">Day 15<br>DOM 조작</a>
+            <a href="day16/" class="day-link upcoming">Day 16<br>이벤트</a>
+            <a href="day17/" class="day-link upcoming">Day 17<br>Ajax</a>
+            <a href="day18/" class="day-link upcoming">Day 18<br>ES6+</a>
+            <a href="day19/" class="day-link upcoming">Day 19<br>모듈</a>
+            <a href="day20/" class="day-link upcoming">Day 20<br>프로젝트 2</a>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2>Week 5-6: 고급 JavaScript (Day 21-30)</h2>
+        <div class="days-grid">
+            <a href="day21/" class="day-link upcoming">Day 21<br>비동기</a>
+            <a href="day22/" class="day-link upcoming">Day 22<br>Promise</a>
+            <a href="day23/" class="day-link upcoming">Day 23<br>Async/Await</a>
+            <a href="day24/" class="day-link upcoming">Day 24<br>클래스</a>
+            <a href="day25/" class="day-link upcoming">Day 25<br>라이브러리</a>
+            <a href="day26/" class="day-link upcoming">Day 26<br>React 기초</a>
+            <a href="day27/" class="day-link upcoming">Day 27<br>컴포넌트</a>
+            <a href="day28/" class="day-link upcoming">Day 28<br>상태관리</a>
+            <a href="day29/" class="day-link upcoming">Day 29<br>라우팅</a>
+            <a href="day30/" class="day-link upcoming">Day 30<br>프로젝트 3</a>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2>Week 7-8: 백엔드 & 배포 (Day 31-40)</h2>
+        <div class="days-grid">
+            <a href="day31/" class="day-link upcoming">Day 31<br>Node.js</a>
+            <a href="day32/" class="day-link upcoming">Day 32<br>Express</a>
+            <a href="day33/" class="day-link upcoming">Day 33<br>데이터베이스</a>
+            <a href="day34/" class="day-link upcoming">Day 34<br>API 개발</a>
+            <a href="day35/" class="day-link upcoming">Day 35<br>인증</a>
+            <a href="day36/" class="day-link upcoming">Day 36<br>배포</a>
+            <a href="day37/" class="day-link upcoming">Day 37<br>테스트</a>
+            <a href="day38/" class="day-link upcoming">Day 38<br>최적화</a>
+            <a href="day39/" class="day-link upcoming">Day 39<br>포트폴리오</a>
+            <a href="day40/" class="day-link upcoming">Day 40<br>최종 프로젝트</a>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 IH Bootcamp | 40일 웹 개발 완성 과정</p>
+        <p>개발자: devskido | 이메일: rkdsim18@gmail.com</p>
+    </footer>
 </body>
 </html>
