@@ -1,16 +1,3 @@
 {
-  "rewrites": [
-    {
-      "source": "/",
-      "destination": "/day01/index.html"
-    },
-    {
-      "source": "/cern",
-      "destination": "/day01/cern-website/index.html"
-    },
-    {
-      "source": "/TheProject.html",
-      "destination": "/day01/cern-website/TheProject.html"
-    }
-  ]
+  "cleanUrls": true
 }
