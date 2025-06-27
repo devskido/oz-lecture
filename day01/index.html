@@ -3,385 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Day 01 - HTML 기초 & CERN 웹사이트</title>
+    <title>Day 01</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
         body {
             font-family: Arial, sans-serif;
-            line-height: 1.6;
-            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
-            min-height: 100vh;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
         }
         
         .container {
-            max-width: 1000px;
-            margin: 0 auto;
             background: white;
-            min-height: 100vh;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
-        }
-        
-        header {
-            background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);
-            color: white;
-            padding: 30px 20px;
-            text-align: center;
-        }
-        
-        .breadcrumb {
-            background: #2d3436;
-            padding: 15px 20px;
-            color: white;
-        }
-        
-        .breadcrumb a {
-            color: #74b9ff;
-            text-decoration: none;
-            margin-right: 10px;
-        }
-        
-        .breadcrumb a:hover {
-            text-decoration: underline;
-        }
-        
-        .nav-container {
-            background: #2d3436;
-            padding: 0;
-        }
-        
-        .day-nav {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        
-        .day-link {
-            display: flex;
-            align-items: center;
-            padding: 15px 25px;
-            color: white;
-            text-decoration: none;
-            border-right: 1px solid #636e72;
-            transition: all 0.3s ease;
-        }
-        
-        .day-link.active {
-            background: #0984e3;
-        }
-        
-        .day-link:hover {
-            background: #74b9ff;
-        }
-        
-        .day-link:last-child {
-            border-right: none;
-        }
-        
-        .main-content {
-            padding: 40px;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         
         h1 {
-            color: #2d3436;
-            margin-bottom: 30px;
-            font-size: 2.2em;
+            color: #333;
             text-align: center;
-        }
-        
-        .project-overview {
-            background: #f1f2f6;
-            padding: 30px;
-            border-radius: 10px;
             margin-bottom: 30px;
-            border-left: 5px solid #0984e3;
         }
         
-        .project-overview h2 {
-            color: #2d3436;
-            margin-bottom: 15px;
-        }
-        
-        .description {
-            color: #636e72;
-            font-size: 1.1em;
-            margin-bottom: 20px;
-            line-height: 1.7;
-        }
-        
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin: 30px 0;
-        }
-        
-        .project-card {
-            background: white;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            padding: 25px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-        }
-        
-        .project-card h3 {
-            color: #2d3436;
-            margin-bottom: 15px;
-            font-size: 1.4em;
-        }
-        
-        .project-card p {
-            color: #636e72;
-            margin-bottom: 20px;
-        }
-        
-        .project-links {
+        .links {
             display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin: 20px 0;
-        }
-        
-        .btn {
-            padding: 12px 20px;
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            text-align: center;
-            display: inline-block;
-        }
-        
-        .btn-primary {
-            background: #0984e3;
-            color: white;
-        }
-        
-        .btn-primary:hover {
-            background: #74b9ff;
-        }
-        
-        .btn-secondary {
-            background: #636e72;
-            color: white;
-        }
-        
-        .btn-secondary:hover {
-            background: #2d3436;
-        }
-        
-        .btn-outline {
-            background: transparent;
-            color: #0984e3;
-            border: 2px solid #0984e3;
-        }
-        
-        .btn-outline:hover {
-            background: #0984e3;
-            color: white;
-        }
-        
-        .features-section {
-            background: #f8f9fa;
-            padding: 30px;
-            border-radius: 10px;
+            flex-direction: column;
+            gap: 15px;
             margin: 30px 0;
         }
         
-        .features-section h3 {
-            color: #2d3436;
-            margin-bottom: 20px;
-            text-align: center;
+        .link-item {
+            padding: 15px;
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
         }
         
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-        
-        .feature-item {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            text-align: center;
-        }
-        
-        .feature-item h4 {
-            color: #0984e3;
-            margin-bottom: 10px;
-        }
-        
-        .feature-item ul {
-            list-style: none;
-            color: #636e72;
-        }
-        
-        .feature-item ul li {
-            margin: 8px 0;
-            padding-left: 20px;
-            position: relative;
-        }
-        
-        .feature-item ul li:before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: #00b894;
+        .link-item a {
+            text-decoration: none;
+            color: #007bff;
             font-weight: bold;
         }
         
-        footer {
-            background: #2d3436;
-            color: white;
-            text-align: center;
-            padding: 30px;
+        .link-item a:hover {
+            text-decoration: underline;
         }
         
-        @media (max-width: 768px) {
-            .day-nav {
-                flex-direction: column;
-            }
-            
-            .day-link {
-                border-right: none;
-                border-bottom: 1px solid #636e72;
-            }
-            
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .main-content {
-                padding: 20px;
-            }
+        .back-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #6c757d;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        
+        .back-btn:hover {
+            background: #5a6268;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>📚 Day 01: HTML 기초 & CERN 웹사이트</h1>
-            <p>웹의 역사를 따라가며 HTML 기초를 배워봅시다</p>
-        </header>
+        <h1>Day 01</h1>
         
-        <nav class="breadcrumb">
-            <a href="../">🏠 홈</a> > 
-            <span>Day 01</span>
-        </nav>
+        <div class="links">
+            <div class="link-item">
+                <a href="requirements">📝 Requirements</a>
+            </div>
+            <div class="link-item">
+                <a href="cern-website/index.html">🏠 CERN 메인 페이지</a>
+            </div>
+            <div class="link-item">
+                <a href="cern-website/TheProject.html">📄 WWW 프로젝트 페이지</a>
+            </div>
+        </div>
         
-        <nav class="nav-container">
-            <div class="day-nav">
-                <a href="../day01/" class="day-link active">Day 01 - HTML 기초</a>
-                <a href="../day02/" class="day-link">Day 02 - HTML Forms</a>
-                <a href="#" class="day-link" style="opacity: 0.5;">Day 03 - CSS 기초</a>
-                <a href="#" class="day-link" style="opacity: 0.5;">Day 04 - CSS 레이아웃</a>
-            </div>
-        </nav>
-        
-        <main class="main-content">
-            <div class="project-overview">
-                <h2>🌐 CERN 웹사이트 재현 프로젝트</h2>
-                <p class="description">
-                    1991년 팀 버너스리가 만든 세계 최초의 웹사이트를 직접 구현해보면서 
-                    HTML의 역사와 기본 구조를 체험합니다. 단순해 보이지만 웹의 모든 기초가 담겨있는 
-                    역사적인 프로젝트입니다.
-                </p>
-            </div>
-            
-            <div class="projects-grid">
-                <div class="project-card">
-                    <h3>🏠 CERN 메인 페이지</h3>
-                    <p>World Wide Web 프로젝트의 시작점입니다. 
-                       HTML의 기본 구조와 하이퍼링크의 개념을 학습할 수 있습니다.</p>
-                    
-                    <div class="project-links">
-                        <a href="cern-website/index.html" class="btn btn-primary">메인 페이지 보기</a>
-                    </div>
-                    
-                    <h4>주요 학습 내용:</h4>
-                    <ul>
-                        <li>HTML 문서 구조</li>
-                        <li>제목 태그 (h1)</li>
-                        <li>문단 태그 (p)</li>
-                        <li>하이퍼링크 (a)</li>
-                        <li>정의 목록 (dl, dt, dd)</li>
-                    </ul>
-                </div>
-                
-                <div class="project-card">
-                    <h3>📄 WWW 프로젝트 페이지</h3>
-                    <p>World Wide Web 프로젝트에 대한 상세한 설명이 담긴 페이지입니다. 
-                       더 다양한 HTML 태그들을 활용해 구조화된 문서를 만들어봅니다.</p>
-                    
-                    <div class="project-links">
-                        <a href="cern-website/TheProject.html" class="btn btn-primary">프로젝트 페이지 보기</a>
-                    </div>
-                    
-                    <h4>주요 학습 내용:</h4>
-                    <ul>
-                        <li>소제목 태그 (h2)</li>
-                        <li>구분선 (hr)</li>
-                        <li>주소 태그 (address)</li>
-                        <li>페이지 간 네비게이션</li>
-                        <li>문서 구조화</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="features-section">
-                <h3>📋 학습 성과 및 스킬</h3>
-                <div class="features-grid">
-                    <div class="feature-item">
-                        <h4>🎯 핵심 개념</h4>
-                        <ul>
-                            <li>HTML 문서 구조 이해</li>
-                            <li>시맨틱 마크업 기초</li>
-                            <li>웹의 역사와 철학</li>
-                            <li>하이퍼텍스트 개념</li>
-                        </ul>
-                    </div>
-                    <div class="feature-item">
-                        <h4>🛠️ 사용 기술</h4>
-                        <ul>
-                            <li>HTML5 DOCTYPE</li>
-                            <li>기본 텍스트 태그</li>
-                            <li>리스트 및 링크</li>
-                            <li>메타데이터 설정</li>
-                        </ul>
-                    </div>
-                    <div class="feature-item">
-                        <h4>💡 실습 포인트</h4>
-                        <ul>
-                            <li>정확한 태그 사용법</li>
-                            <li>적절한 들여쓰기</li>
-                            <li>의미 있는 구조화</li>
-                            <li>브라우저 호환성</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            
-            <div style="text-align: center; margin: 40px 0;">
-                <a href="requirements" class="btn btn-outline">📝 과제 요구사항 보기</a>
-                <a href="../day02/" class="btn btn-secondary">➡️ Day 02로 계속하기</a>
-            </div>
-        </main>
-        
-        <footer>
-            <p>&copy; 2025 IH Bootcamp Day 01 | HTML 기초 학습</p>
-            <p>CERN 웹사이트 재현 프로젝트</p>
-        </footer>
+        <a href="../" class="back-btn">← 메인으로 돌아가기</a>
     </div>
 </body>
 </html>
