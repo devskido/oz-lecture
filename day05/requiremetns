@@ -1,0 +1,149 @@
+## 과제 개요
+
+이번 수업에서 반응형 웹 디자인, `@media` 규칙과 미디어 쿼리, 모바일 퍼스트 및 데스크톱 퍼스트 디자인, 뷰포트와 해상도 개념, 그리고 `vw`, `vh`, `rem`, `em` 단위에 대해 배웠습니다. 이번 과제는 HTML5 시맨틱 태그(`<header>`, `<nav>`, `<section>`, `<article>`, `<aside>`, `<footer>`)와 CSS를 사용하여 **개인 블로그 웹페이지**를 제작하고, 다양한 화면 크기(모바일, 태블릿, 데스크톱)에 적응하는 반응형 디자인을 구현하는 것입니다. 기본 과제는 **모바일 퍼스트** 접근 방식을 사용하며, **도전 과제**에서는 **데스크톱 퍼스트** 접근 방식을 연습합니다.
+
+## 기본 과제 요구사항
+
+1. **HTML 페이지 (blog.html)**
+    - 시맨틱 태그를 사용하여 아래 구조를 기반으로 블로그 페이지를 작성하세요:
+        
+        ```html
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>My Blog</title>
+          <link rel="stylesheet" href="styles.css">
+        </head>
+        <body>
+          <header>
+            <h1>My Blog</h1>
+            <nav>
+              <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#posts">Posts</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+              </ul>
+            </nav>
+          </header>
+          <section id="posts">
+            <h2>Recent Posts</h2>
+            <article class="post">
+              <h3>Post Title 1</h3>
+              <p>Summary of the first blog post. (50~100 words)</p>
+            </article>
+            <article class="post">
+              <h3>Post Title 2</h3>
+              <p>Summary of the second blog post. (50~100 words)</p>
+            </article>
+            <article class="post">
+              <h3>Post Title 3</h3>
+              <p>Summary of the third blog post. (50~100 words)</p>
+            </article>
+          </section>
+          <aside>
+            <h3>About the Author</h3>
+            <p>Brief introduction about yourself. (30~50 words)</p>
+          </aside>
+          <footer>
+            <p>Contact: email@example.com</p>
+            <p>© 2025 My Blog</p>
+          </footer>
+        </body>
+        </html>
+        
+        ```
+        
+    - `<meta name="viewport" content="width=device-width, initial-scale=1.0">`를 `<head>`에 반드시 포함하세요.
+    - `<section>`은 최소 1개(Posts), `<article>`은 최소 3개 포스트를 포함하세요.
+    - `<nav>`는 최소 4개의 메뉴 항목을 포함하며, `<a>` 태그의 `href`는 섹션 ID(예: `#posts`)를 참조하거나 `#`로 설정하세요.
+2. **CSS 스타일링 (styles.css)**
+    - 외부 CSS 파일(`styles.css`)을 사용하여 **모바일 퍼스트** 접근 방식으로 아래 스타일을 적용하세요:
+        - **박스 모델과 기본 스타일**:
+            - : 모든 요소에 `box-sizing: border-box; margin: 0; padding: 0;`.
+            - `<body>`: `font-family: Arial, sans-serif;`, 최대 너비를 `100%`, 패딩 `1rem`.
+            - `<header>`: `padding: 1rem;`, 하단 테두리를 `0.1rem` 두께의 실선, 하단 여백 `1rem`.
+            - `.post`: `padding: 1rem;`, 테두리를 `0.1rem` 두께의 실선, 하단 여백 `1rem`.
+            - `<aside>`: `padding: 1rem;`, 상단 여백 `1rem`.
+            - `<footer>`: `padding: 1rem;`, 상단 테두리를 `0.1rem` 두께의 실선, 상단 여백 `1rem`.
+        - **상대 단위 활용**:
+            - `<h1>`: 글자 크기를 `2rem`.
+            - `<h2>`, `<h3>`: 글자 크기를 각각 `1.5rem`, `1.2rem`.
+            - `<nav ul>`: 패딩을 `1rem`.
+            - `<section>`: 여백을 `1vw` 좌우, `2vw` 상하.
+            - `<aside>`: 글자 크기를 `0.9rem`, 줄 간격을 `1.5em`.
+            - `<footer>`: 글자 크기를 `0.8rem`, 텍스트를 중앙 정렬.
+        - **flexbox**:
+            - `<nav ul>`: `display: flex;`, 세로 방향으로 메뉴 배치, 항목 간 간격 `0.5rem`.
+            - `#posts`: `display: flex;`, 세로 방향으로 포스트 배치, 항목 간 간격 `1rem`.
+        - **미디어 쿼리**:
+            - **태블릿 (768px 이상)**:
+                - `<body>`: 최대 너비를 `90vw`, 중앙 정렬.
+                - `<nav ul>`: 가로 방향으로 메뉴 배치, 항목 간 간격을 고르게 분배.
+                - `#posts`: 2열 그리드 레이아웃, 열 너비를 `1fr`, 열 간 간격 `1.5rem`.
+                - `<aside>`: 여백을 `1.5rem`으로 증가.
+            - **데스크톱 (1024px 이상)**:
+                - `<body>`: 최대 너비를 `80vw`, 중앙 정렬.
+                - `#posts`: 3열 그리드 레이아웃, 열 너비를 `1fr`, 열 간 간격 유지.
+                - `<aside>`: 너비를 `25vw`, 왼쪽 여백을 `2vw`.
+3. **파일 구조**
+    - 프로젝트 폴더를 생성하고, 아래와 같은 구조로 파일을 구성하세요:
+        
+        ```
+        blog/
+        ├── blog.html
+        ├── styles.css
+        
+        ```
+        
+
+## 도전 과제 (선택)
+
+기본 과제를 완료한 학생들은 **데스크톱 퍼스트** 접근 방식으로 새로운 CSS 파일(`styles-desktop.css`)을 작성하여 반응형 블로그 페이지를 구현하세요. 
+
+1. **데스크톱 퍼스트 디자인**
+    - 새로운 CSS 파일(`styles-desktop.css`)을 만들고, `<link rel="stylesheet" href="styles-desktop.css">`로 HTML에 연결하세요.
+    - **기본 스타일(데스크톱 기준)**:
+        - `<body>`: 최대 너비 `80vw`, 중앙 정렬, 글자 크기 `1rem`.
+        - `<header>`: 패딩 `2rem`, 하단 테두리 `0.2rem` 두께의 실선.
+        - `<nav ul>`: `display: flex;`, 가로 방향, 항목 간 간격 고르게 분배.
+        - `#posts`: 3열 그리드 레이아웃, 열 너비 `1fr`, 간격 `2rem`.
+        - `.post`: 패딩 `1.5rem`, 테두리 `0.2rem` 두께의 실선.
+        - `<aside>`: 너비 `25vw`, 패딩 `1.5rem`, 오른쪽 여백 `2vw`.
+        - `<footer>`: 패딩 `1.5rem`, 상단 테두리 `0.2rem`, 텍스트 중앙 정렬.
+        - 상대 단위: `<h1>`에 `2.5rem`, `<section>`에 `margin: 2vw`, `<aside>`에 `font-size: 1em`.
+    - **미디어 쿼리**:
+        - **태블릿 (최대 1023px)**:
+            - `<body>`: 최대 너비 `90vw`.
+            - `#posts`: 2열 그리드 레이아웃, 열 간 간격 `1.5rem`.
+            - `<nav ul>`: 가로 방향 유지, 항목 간 간격 축소.
+            - `<aside>`: 너비 `30vw`, 여백 축소.
+        - **모바일 (최대 767px)**:
+            - `<body>`: 최대 너비 `100%`, 패딩 `1rem`.
+            - `<nav ul>`: 세로 방향으로 메뉴 배치, 항목 간 간격 `0.5rem`.
+            - `#posts`: 단일 열 레이아웃, 간격 `1rem`.
+            - `<aside>`: 너비 `100%`, 여백 `1rem`.
+2. **도전 과제 파일 구조**
+    - 도전 과제를 수행한 경우, `styles-desktop.css`를 추가하세요:
+        
+        ```
+        blog/
+        ├── blog.html
+        ├── styles.css
+        ├── styles-desktop.css
+        
+        ```
+        
+
+## 주의사항
+
+- **모바일 퍼스트 vs 데스크톱 퍼스트**: 기본 과제는 모바일 퍼스트(`min-width` 기반 미디어 쿼리)로 작성하고, 도전 과제는 데스크톱 퍼스트(`max-width` 기반 미디어 쿼리)로 작성하세요.
+- **뷰포트 설정**: `<meta name="viewport" content="width=device-width, initial-scale=1.0">`를 반드시 포함하여 반응형 동작을 보장하세요.
+- **상대 단위**: `vw`, `vh`, `rem`, `em`을 적어도 한 번씩 사용하고, 고정 단위(`px`)는 최소화하세요.
+- **미디어 쿼리**: 기본 과제는 최소 두 개의 브레이크포인트(예: 768px, 1024px), 도전 과제는 두 개의 브레이크포인트(예: 1023px, 767px)를 사용하세요.
+- **시맨틱 태그**: `<header>`, `<nav>`, `<section>`, `<article>`, `<aside>`, `<footer>`를 의미에 맞게 사용하세요.
+- **코드 가독성**: CSS 코드는 들여쓰기를 통해 가독성을 높이고, 주석(`/* */`)을 활용해 섹션(예: 모바일 스타일, 태블릿 미디어 쿼리)을 구분하세요.
+- **브라우저 테스트**: HTML과 CSS 파일을 최신 브라우저(Chrome, Firefox 등)에서 열어 다양한 화면 크기(모바일, 태블릿, 데스크톱)에서 레이아웃이 올바르게 표시되는지 확인하세요. 개발자 도구의 반응형 모드를 활용하세요.
+- **파일 연결**: `<link rel="stylesheet" href="styles.css">` (또는 도전 과제의 경우 `styles-desktop.css`)로 CSS 파일을 HTML에 연결하고, 경로가 올바른지 확인하세요.
