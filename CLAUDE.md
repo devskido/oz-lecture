@@ -2,6 +2,10 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Language Preference
+
+**IMPORTANT**: Always respond in English, regardless of the language used in the user's questions or requests. Even if the user writes in Korean or any other language, all responses, explanations, and documentation should be provided in English.
+
 ## IH Bootcamp Project Structure
 
 This is a bootcamp project with daily assignments organized in day01 through day40 folders.
