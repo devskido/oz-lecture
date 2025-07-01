@@ -75,3 +75,18 @@ Guidelines:
 - Use consistent styling across all day folders
 - Test all links to ensure they work properly
 - Maintain the same visual design language throughout the project
+
+## Assignment Completion Status
+
+When a day's assignment is completed, update the main index.html to reflect the completion status:
+
+1. **Color Change**: Change the button/card color for completed assignments
+   - Default (not started): Gray or neutral color
+   - Completed: Green color (e.g., #28a745 or similar)
+   
+2. **Visual Indicators**: Add completion indicators such as:
+   - ✅ checkmark emoji
+   - "Completed" status badge
+   - Different background color or border
+
+3. **Consistency**: Ensure all completed assignments have the same visual treatment across the main navigation page
