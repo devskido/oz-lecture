@@ -3,77 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Day 07 - Coming Soon</title>
+    <title>Day 07 - Bootstrap Portfolio</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            text-align: center;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
         }
         .container {
-            background: rgba(255,255,255,0.1);
-            padding: 40px;
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         h1 {
-            font-size: 3em;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            color: #007bff;
+            border-bottom: 3px solid #007bff;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+            text-align: center;
         }
-        .day-number {
-            font-size: 6em;
-            font-weight: bold;
-            margin: 20px 0;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
-        }
-        p {
-            font-size: 1.2em;
-            margin: 20px 0;
-            opacity: 0.9;
-        }
-        .back-btn {
+        .back-button {
             display: inline-block;
-            margin-top: 30px;
-            padding: 15px 30px;
-            background: rgba(255,255,255,0.2);
+            margin-bottom: 20px;
+            padding: 8px 16px;
+            background-color: #6c757d;
             color: white;
             text-decoration: none;
-            border-radius: 50px;
-            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .back-button:hover {
+            background-color: #5a6268;
+        }
+        .links {
+            margin-top: 30px;
+        }
+        .link-item {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
             transition: all 0.3s ease;
-            font-weight: bold;
         }
-        .back-btn:hover {
-            background: rgba(255,255,255,0.3);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        .link-item:hover {
+            background-color: #e9ecef;
+            transform: translateX(5px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
-        .status {
-            background: rgba(255,193,7,0.8);
-            color: #333;
-            padding: 10px 20px;
-            border-radius: 20px;
-            font-weight: bold;
-            display: inline-block;
-            margin: 20px 0;
+        .link-item a {
+            color: #495057;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .link-item a:hover {
+            color: #007bff;
+        }
+        .subtitle {
+            text-align: center;
+            color: #6c757d;
+            margin-bottom: 30px;
+            font-size: 1.1em;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="day-number">07</div>
-        <h1>Day 07</h1>
-        <div class="status">🚧 준비 중</div>
-        <p>이 과정은 아직 준비 중입니다.<br>
-        곧 멋진 콘텐츠로 찾아뵙겠습니다!</p>
-        <a href="../" class="back-btn">← 메인으로 돌아가기</a>
+        <a href="../" class="back-button">← 메인으로 돌아가기</a>
+        
+        <h1>Day 07 - Bootstrap Portfolio</h1>
+        <p class="subtitle">Bootstrap 5를 활용한 개인 포트폴리오 웹사이트 제작</p>
+        
+        <div class="links">
+            <div class="link-item">
+                <a href="requirements.html">📝 Requirements</a>
+            </div>
+            <div class="link-item">
+                <a href="portfolio/index.html">📄 My Portfolio Website</a>
+            </div>
+        </div>
     </div>
 </body>
 </html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 07 - Requirements</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #007bff;
+            border-bottom: 3px solid #007bff;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #333;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            padding-left: 10px;
+            border-left: 4px solid #007bff;
+        }
+        h3 {
+            color: #555;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        pre {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            border: 1px solid #dee2e6;
+        }
+        code {
+            background-color: #f8f9fa;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        ul, ol {
+            margin-bottom: 15px;
+            padding-left: 30px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        .highlight {
+            background-color: #fff3cd;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #ffc107;
+            margin: 20px 0;
+        }
+        .back-button {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 8px 16px;
+            background-color: #6c757d;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .back-button:hover {
+            background-color: #5a6268;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-button">← Day 07로 돌아가기</a>
+        
+        <h1>Day 07 - Requirements</h1>
+        
+        <h2>과제 개요</h2>
+        <p>이번 수업에서 Bootstrap 5의 개념(CSS 프레임워크), 그리드 시스템(컨테이너, 행, 열), 기본 UI 컴포넌트(버튼, 폼, 네비게이션 바), 유틸리티 클래스(<code>text-center</code>, <code>d-flex</code>, <code>m-0</code>, <code>p-0</code>)를 배웠습니다. 이번 과제는 day08 클론코딩 미니프로젝트를 대비하여 Bootstrap 5 공식 웹사이트 또는 기타 신뢰할 수 있는 소스에서 제공하는 템플릿을 찾아 활용하여 <strong>개인 소개 웹사이트</strong>를 제작하는 것입니다. 기본 과제는 Bootstrap 템플릿을 사용하여 웹사이트를 제작하고, 도전 과제는 GitHub Pages를 통해 웹사이트를 배포하는 작업입니다.</p>
+        
+        <h2>기본 과제 요구사항</h2>
+        <ol>
+            <li>
+                <strong>Bootstrap 템플릿 선택 및 수정</strong>
+                <ul>
+                    <li>Bootstrap 5 공식 웹사이트(https://getbootstrap.com/docs/5.3/examples/) 또는 다른 신뢰할 수 있는 소스(예: Start Bootstrap, BootstrapMade)에서 개인 소개 웹사이트에 적합한 템플릿을 선택하세요.</li>
+                    <li>선택한 템플릿을 다운로드하고, 아래 요구사항을 충족하도록 수정하세요:
+                        <ul>
+                            <li><strong>HTML 구조</strong>:
+                                <ul>
+                                    <li>시맨틱 태그(<code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;aside&gt;</code>, <code>&lt;footer&gt;</code>)를 포함.</li>
+                                    <li><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code>를 <code>&lt;head&gt;</code>에 포함.</li>
+                                    <li>페이지 제목(<code>&lt;title&gt;</code>)은 "My Portfolio"로 설정.</li>
+                                    <li>최소 3개의 섹션: About Me, Projects, Contact.</li>
+                                </ul>
+                            </li>
+                            <li><strong>그리드 시스템</strong>:
+                                <ul>
+                                    <li><code>container</code>, <code>row</code>, <code>col-*</code> 클래스를 사용하여 반응형 레이아웃 구현(예: 프로젝트 섹션에서 3열 카드 레이아웃).</li>
+                                    <li>모바일, 태블릿, 데스크톱에서 적절히 동작하도록 조정.</li>
+                                </ul>
+                            </li>
+                            <li><strong>UI 컴포넌트</strong>:
+                                <ul>
+                                    <li>네비게이션 바(<code>navbar</code>)를 포함, 최소 4개의 메뉴 항목(예: Home, About, Projects, Contact).</li>
+                                    <li>프로젝트 섹션에 <code>card</code> 컴포넌트를 사용하여 최소 3개의 프로젝트 소개.</li>
+                                    <li>연락처 섹션에 <code>form</code> 컴포넌트(최소 이름, 이메일 입력 필드와 제출 버튼 포함).</li>
+                                </ul>
+                            </li>
+                            <li><strong>유틸리티 클래스</strong>:
+                                <ul>
+                                    <li><code>text-center</code>, <code>my-*</code>, <code>p-*</code>, <code>d-flex</code> 등을 사용하여 스타일링(예: 섹션 제목 중앙 정렬, 여백 조정).</li>
+                                    <li>템플릿의 기본 스타일을 유지하되, 최소 3개의 유틸리티 클래스를 추가로 적용.</li>
+                                </ul>
+                            </li>
+                            <li><strong>콘텐츠</strong>:
+                                <ul>
+                                    <li>About Me: 자신을 소개하는 문단(50~100단어).</li>
+                                    <li>Projects: 최소 3개의 프로젝트 설명(각 30~50단어).</li>
+                                    <li>Contact: 이름과 이메일 입력 폼, 제출 버튼 포함.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <strong>파일 구조</strong>
+                <ul>
+                    <li>프로젝트 폴더를 구성하세요:</li>
+                </ul>
+                <pre>portfolio/
+├── index.html
+├── css/
+│   ├── bootstrap.min.css (또는 CDN 사용)
+│   ├── custom.css (선택 사항, 추가 스타일)
+├── js/
+│   ├── bootstrap.bundle.min.js (또는 CDN 사용)</pre>
+            </li>
+        </ol>
+        
+        <h2>도전 과제 (선택)</h2>
+        <p>기본 과제를 완료한 학생들은 GitHub Pages를 통해 웹사이트를 배포하세요.</p>
+        
+        <ol>
+            <li>
+                <strong>GitHub Pages 배포</strong>
+                <ul>
+                    <li><strong>저장소 생성</strong>:
+                        <ul>
+                            <li>GitHub에서 새로운 <strong>공개</strong> 저장소(<code>project-name.github.io</code>)를 생성하세요. 저장소 이름은 <code>project-name.github.io</code> 형식이어야 합니다.</li>
+                            <li>기본 과제의 <code>index.html</code> 및 관련 파일을 이 저장소에 업로드하세요.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Git 작업</strong>:
+                        <ul>
+                            <li>로컬에서 <code>project-name.github.io</code> 저장소로 파일을 커밋하고 푸시:</li>
+                        </ul>
+                        <pre>git init
+git add .
+git commit -m "Initial commit: Add portfolio for GitHub Pages"
+git remote add origin [remote-git-repository-url]
+git push origin -u main</pre>
+                    </li>
+                    <li><strong>GitHub Pages 설정</strong>:
+                        <ul>
+                            <li>GitHub 저장소의 <strong>Settings</strong> 탭으로 이동.</li>
+                            <li>좌측 메뉴에서 <strong>Pages</strong>를 선택.</li>
+                            <li><strong>Deploy from a branch</strong>를 선택하고, <strong>Branch</strong>를 <code>main</code>으로 설정.</li>
+                            <li>배포 완료 후(몇 분 소요될 수 있음), <strong>Pages</strong> 화면에서 배포된 URL(예: <code>https://project-name.github.io</code>)을 확인.</li>
+                        </ul>
+                    </li>
+                    <li><strong>확인</strong>:
+                        <ul>
+                            <li>배포된 URL에 접속하여 웹사이트가 정상적으로 표시되는지 확인.</li>
+                        </ul>
+                    </li>
+                    <li><strong>제출물 추가</strong>:
+                        <ul>
+                            <li>GitHub Pages URL(예: <code>https://project-name.github.io</code>)을 제출.</li>
+                            <li>커밋 히스토리 스크린샷(최소 1개의 커밋 포함).</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ol>
+        
+        <h2>주의사항</h2>
+        <div class="highlight">
+            <ul>
+                <li><strong>Bootstrap 템플릿</strong>: 공식 Bootstrap 사이트 또는 신뢰할 수 있는 소스에서 템플릿을 선택하고, 출처를 기록하세요(예: Notion 제출 시 템플릿 URL 기재).</li>
+                <li><strong>CDN 사용</strong>: Bootstrap 5 CSS와 JS를 CDN(<code>https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/</code>)으로 연결하거나, 다운로드한 파일을 사용하세요.</li>
+                <li><strong>그리드 시스템</strong>: <code>container</code>, <code>row</code>, <code>col-*</code>를 활용하여 반응형 레이아웃을 유지하세요.</li>
+                <li><strong>유틸리티 클래스</strong>: 최소 3개의 유틸리티 클래스를 추가로 적용하여 템플릿을 커스터마이징하세요.</li>
+                <li><strong>GitHub Pages</strong>: 도전 과제에서 저장소 이름(<code>project-name.github.io</code>)을 정확히 설정하고, 배포 후 URL이 작동하는지 확인하세요.</li>
+                <li><strong>테스트</strong>: 로컬에서 <code>index.html</code>을 브라우저로 열어 Bootstrap 컴포넌트와 반응형 동작을 확인하고, 도전 과제 수행 시 GitHub Pages URL로 접속하여 확인하세요.</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
