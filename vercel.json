@@ -2,7 +2,7 @@
   "cleanUrls": true,
   "headers": [
     {
-      "source": "/(.*).js",
+      "source": "**/*.js",
       "headers": [
         {
           "key": "Content-Type",
@@ -15,7 +15,7 @@
       ]
     },
     {
-      "source": "/(.*).html",
+      "source": "**/*.html",
       "headers": [
         {
           "key": "Content-Type",
@@ -24,13 +24,23 @@
       ]
     },
     {
-      "source": "/(.*)",
+      "source": "**/*",
       "headers": [
         {
           "key": "X-Content-Type-Options",
           "value": "nosniff"
         }
       ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/day09/profile-generator/(.*)",
+      "destination": "/day09/profile-generator/$1"
+    },
+    {
+      "source": "/day10/score-calculator/(.*)",
+      "destination": "/day10/score-calculator/$1"
     }
   ]
 }

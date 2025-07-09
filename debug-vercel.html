@@ -97,11 +97,33 @@
         
         // Test dynamic script loading
         console.log('Testing dynamic script loading...');
-        const testScript = document.createElement('script');
-        testScript.src = '/day09/profile-generator/profile.js';
-        testScript.onload = () => console.log('✅ Dynamic script loading successful');
-        testScript.onerror = () => console.error('❌ Dynamic script loading failed');
-        document.head.appendChild(testScript);
+        
+        // Test 1: Profile generator script
+        const testScript1 = document.createElement('script');
+        testScript1.src = '/day09/profile-generator/profile.js';
+        testScript1.onload = () => console.log('✅ Profile.js loaded successfully');
+        testScript1.onerror = () => console.error('❌ Profile.js failed to load');
+        document.head.appendChild(testScript1);
+        
+        // Test 2: Score calculator script
+        const testScript2 = document.createElement('script');
+        testScript2.src = '/day10/score-calculator/score.js';
+        testScript2.onload = () => console.log('✅ Score.js loaded successfully');
+        testScript2.onerror = () => console.error('❌ Score.js failed to load');
+        
+        // Delay score.js to avoid prompt conflict
+        setTimeout(() => {
+            document.head.appendChild(testScript2);
+        }, 2000);
+        
+        // Test 3: Check MIME types via fetch
+        fetch('/day09/profile-generator/profile.js')
+            .then(response => {
+                console.log('Profile.js MIME type:', response.headers.get('Content-Type'));
+                return response.text();
+            })
+            .then(text => console.log('✅ Profile.js content loaded, length:', text.length))
+            .catch(err => console.error('❌ Profile.js fetch error:', err));
     </script>
 </body>
 </html>
