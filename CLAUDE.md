@@ -6,9 +6,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **IMPORTANT**: Always respond in English, regardless of the language used in the user's questions or requests. Even if the user writes in Korean or any other language, all responses, explanations, and documentation should be provided in English.
 
-## IH Bootcamp Project Structure
+## OZ Lecture Project Structure
 
-This is a bootcamp project with daily assignments organized in day01 through day40 folders.
+This is a lecture project with daily assignments organized in day01 through day40 folders.
 
 ## Requirements File Format
 

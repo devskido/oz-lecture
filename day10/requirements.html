@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 10 - Requirements</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #007bff;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #333;
+            margin-top: 30px;
+        }
+        pre {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 5px;
+            padding: 15px;
+            overflow-x: auto;
+        }
+        code {
+            background-color: #f8f9fa;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        ul, ol {
+            margin-left: 20px;
+        }
+        li {
+            margin-bottom: 5px;
+        }
+        .highlight {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 10px;
+            margin: 20px 0;
+        }
+        .back-button {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-button">← 돌아가기</a>
+        
+        <h1>Day 10 - Requirements</h1>
+        
+        <h2>과제 개요</h2>
+        <p>이번 수업에서 JavaScript의 연산자(이항 산술: <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>%</code>, 단항 산술: <code>++</code>, <code>--</code>, 단항 부정: <code>!</code>, 복합 대입: <code>+=</code>, <code>-=</code>, <code>*=</code>, <code>/=</code>, 비교: <code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code>, <code>==</code>, <code>===</code>, 논리: <code>&amp;&amp;</code>, <code>||</code>, <code>!</code>, 삼항 연산자: <code>?:</code>, 연산자 우선순위)와 조건문(<code>if</code>, <code>else</code>, <code>else if</code>, <code>switch</code>)을 배웠습니다. 이번 과제는 <strong>HTML 없이 순수 JavaScript</strong>를 사용하여 브라우저 콘솔에서 실행되는 <strong>학생 시험 점수 관리기</strong>를 제작하는 것입니다.</p>
+        <p>학생이 입력한 시험 점수(0~100)를 받아 최종 점수를 계산하고, 등급(A~F)을 부여하며, 합격/불합격 여부를 판단하고, 등급별 메시지를 출력합니다. 기본 과제는 연산자와 조건문(<code>if</code>로 등급 부여, <code>switch</code>로 메시지 출력)을 활용하여 핵심 기능을 구현하며, 도전 과제는 입력 유효성 검사와 추가 점수 조정을 추가합니다. 동일한 결과를 다양한 연산자 조합으로 구현할 수 있습니다.</p>
+        
+        <h2>기본 과제 요구사항</h2>
+        <ol>
+            <li><strong>JavaScript 파일 (score.js)</strong>
+                <ul>
+                    <li>브라우저 콘솔에서 실행 가능한 JavaScript 파일을 작성하세요.</li>
+                    <li><strong>목표</strong>: 사용자가 입력한 시험 점수(0~100)를 받아 다음 정보를 출력:
+                        <ul>
+                            <li><strong>최종 점수</strong>: 입력 점수에 5점 보너스 추가(최대 105점).</li>
+                            <li><strong>등급</strong>: 아래 범위에 따라 부여.
+                                <ul>
+                                    <li>S: 100 이상</li>
+                                    <li>A: 90 이상 100 미만</li>
+                                    <li>B: 80 이상 90 미만</li>
+                                    <li>C: 70 이상 80 미만</li>
+                                    <li>D: 60 이상 70 미만</li>
+                                    <li>F: 60 미만</li>
+                                </ul>
+                            </li>
+                            <li><strong>합격/불합격 여부</strong>: 60점 이상이면 "Pass", 미만이면 "Fail".</li>
+                            <li><strong>등급별 메시지</strong>: 아래 메시지를 정확히 출력.
+                                <ul>
+                                    <li>S: "Super!!"</li>
+                                    <li>A: "Excellent work!"</li>
+                                    <li>B: "Good job!"</li>
+                                    <li>C: "Satisfactory performance."</li>
+                                    <li>D: "Needs improvement."</li>
+                                    <li>F: "Please try harder!"</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><strong>기능 요구사항</strong>:
+                        <ul>
+                            <li><strong>변수 선언</strong>:
+                                <ul>
+                                    <li><code>var</code>, <code>let</code>, <code>const</code>를 각각 최소 1회 사용하여 변수 선언(예: 점수, 최대 점수, 등급).</li>
+                                    <li>예: <code>const maxScore = 100;</code> (최대 점수), <code>let score;</code> (입력 점수), <code>var grade;</code> (등급).</li>
+                                </ul>
+                            </li>
+                            <li><strong>연산자 사용</strong>:
+                                <ul>
+                                    <li><strong>이항 산술</strong>: 보너스 점수 추가(예: <code>score + 5</code>).</li>
+                                    <li><strong>복합 대입</strong>: 점수에 5점 추가(예: <code>score += 5</code> 또는 <code>score = score + 5</code>).</li>
+                                    <li><strong>비교</strong>: 등급 범위 확인(예: <code>score >= 90</code>).</li>
+                                    <li><strong>논리</strong>: 등급 범위 조건(예: <code>score >= 90 && score <= 100</code>).</li>
+                                    <li><strong>삼항 연산자</strong>: 합격/불합격 판단(예: <code>score >= 60 ? "Pass" : "Fail"</code>).</li>
+                                    <li><strong>연산자 우선순위</strong>: 계산 시 괄호 사용 권장(예: <code>(score + 5) <= 100</code>).</li>
+                                    <li>학생은 연산자 조합을 자유롭게 선택 가능(예: <code>score + 5</code> vs <code>score += 5</code>).</li>
+                                </ul>
+                            </li>
+                            <li><strong>조건문</strong>:
+                                <ul>
+                                    <li><strong>등급 부여</strong>: <code>if</code>, <code>else if</code>, <code>else</code>만 사용하여 등급(A, B, C, D, F) 부여.</li>
+                                    <li><strong>메시지 출력</strong>: <code>switch</code>만 사용하여 등급별 메시지 출력(위 메시지 정확히 준수).</li>
+                                </ul>
+                            </li>
+                            <li><strong>입출력</strong>:
+                                <ul>
+                                    <li><code>prompt()</code>로 점수(0~100)를 입력받음.</li>
+                                </ul>
+                                <pre>let input = prompt("점수를 입력하세요.");
+console.log(input);</pre>
+                                <ul>
+                                    <li>콘솔 출력 형식:</li>
+                                </ul>
+                                <pre>Final Score: [최종 점수]
+Grade: [등급]
+Status: [Pass/Fail]
+Message: [등급별 메시지]</pre>
+                                <ul>
+                                    <li>예: 입력 85 → 출력:</li>
+                                </ul>
+                                <pre>Final Score: 90
+Grade: A
+Status: Pass
+Message: Excellent work!</pre>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><strong>구현 선택</strong>:
+                        <ul>
+                            <li>연산자 활용 방식은 자유롭게 조합(예: <code>score = score + 5</code> vs <code>score += 5</code>).</li>
+                            <li><code>if</code> 문의 조건 순서와 논리 연산자는 학생이 설계 가능(예: <code>score >= 90</code> vs <code>score > 89</code>).</li>
+                            <li><code>switch</code> 문에서 <code>case</code>는 등급(A, B, C, D, F)에 맞춰 작성.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li><strong>실행 방법</strong>
+                <ul>
+                    <li>JavaScript 파일을 작성 후, 브라우저 개발자 도구(F12 → Console)에서 코드를 복사/붙여넣기하여 실행하거나, 간단한 HTML 파일에 <code>&lt;script src="score.js"&gt;&lt;/script&gt;</code>를 추가하여 실행:</li>
+                    <li>HTML은 제출에 포함하지 않아도 됩니다.</li>
+                </ul>
+            </li>
+            <li><strong>파일 구조</strong>
+                <ul>
+                    <li>프로젝트 폴더를 구성:</li>
+                </ul>
+                <pre>score-calculator/
+├── score.js</pre>
+            </li>
+        </ol>
+        
+        <h2>도전 과제 (선택)</h2>
+        <p>기본 과제를 완료한 학생들은 추가 연산과 조건 처리를 연습하세요.</p>
+        <ol>
+            <li><strong>추가 기능 구현</strong>
+                <ul>
+                    <li><strong>입력 유효성 검사</strong>:
+                        <ul>
+                            <li>입력 점수가 0~100 범위를 벗어나거나 숫자가 아닌 경우(<code>isNaN(score)</code>), 정확히 <code>Invalid score! Please enter a number between 0 and 100.</code> 출력 후 프로그램 종료.</li>
+                            <li>논리 연산자(<code>||</code>, <code>!</code>) 필수(예: <code>isNaN(score) || score < 0 || score > 100</code>).</li>
+                        </ul>
+                    </li>
+                    <li><strong>추가 연산</strong>:
+                        <ul>
+                            <li><strong>단항 산술</strong>: 점수 조정(예: <code>score++</code>로 1점 증가 후 5점 보너스 추가).</li>
+                            <li><strong>복합 대입</strong>: 점수 스케일링(예: <code>score *= 1.1</code>로 10% 가산).</li>
+                            <li><strong>단항 부정</strong>: 조건 반전(예: <code>!isNaN(score)</code>).</li>
+                        </ul>
+                    </li>
+                    <li><strong>복잡한 조건</strong>:
+                        <ul>
+                            <li>보너스 점수와 스케일링 후 점수가 100을 초과하면 100으로 제한(예: <code>if (score > 100) score = 100;</code>).</li>
+                            <li><code>switch</code>에 특수 case 추가: 점수가 정확히 100이면 메시지 <code>Perfect Score!</code> 출력(A 등급 메시지 대신).</li>
+                        </ul>
+                    </li>
+                    <li><strong>출력 형식</strong>:
+                        <ul>
+                            <li>유효하지 않은 입력:</li>
+                        </ul>
+                        <pre>Invalid score! Please enter a number between 0 and 100.</pre>
+                        <ul>
+                            <li>유효한 입력(예: 입력 90):</li>
+                        </ul>
+                        <pre>Final Score: 100
+Grade: A
+Status: Pass
+Message: Perfect Score!</pre>
+                    </li>
+                    <li><strong>구현 선택</strong>:
+                        <ul>
+                            <li>유효성 검사는 <code>if</code> 또는 삼항 연산자로 가능.</li>
+                            <li>점수 조정은 <code>++</code>, <code>=</code>, <code>+=</code> 등 조합 자유.</li>
+                            <li><code>switch</code> 문에서 <code>score === 100</code>을 별도 <code>case</code>로 처리하거나 A 등급 내에서 조건 추가 가능.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ol>
+        
+        <h2>주의사항</h2>
+        <div class="highlight">
+            <ul>
+                <li><strong>JavaScript 문법</strong>: <code>var</code>, <code>let</code>, <code>const</code>, 연산자(이항 산술, 단항 산술, 단항 부정, 복합 대입, 비교, 논리, 삼항), 조건문(<code>if</code>, <code>else if</code>, <code>else</code>로 등급 부여, <code>switch</code>로 메시지 출력)만 사용하세요. 배열, 객체, 루프, 함수, DOM 조작은 사용하지 마세요.</li>
+                <li><strong>실행 환경</strong>: 브라우저 콘솔(F12)에서 실행하거나, 간단한 HTML 파일로 테스트하세요. Node.js는 사용하지 않습니다.</li>
+                <li><strong>코드 가독성</strong>: JavaScript 코드는 들여쓰기를 통해 가독성을 높이고, 주석(<code>//</code>)으로 주요 코드(연산자 사용, 등급 부여, 메시지 출력)를 설명하세요.</li>
+                <li><strong>테스트</strong>: 브라우저 콘솔에서 <code>score.js</code>를 실행하여 최종 점수, 등급, 합격 여부, 메시지가 정확히 출력되는지 확인(예: 입력 85 → <code>Final Score: 90</code>, <code>Grade: A</code>, <code>Status: Pass</code>, <code>Message: Excellent work!</code>).</li>
+                <li><strong>입력 처리</strong>: <code>prompt()</code>는 문자열을 반환하므로 <code>Number()</code>로 변환하세요. 도전 과제에서는 유효성 검사 필수.</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

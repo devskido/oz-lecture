@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Score Calculator - Day 10</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        p {
+            color: #666;
+            line-height: 1.6;
+            text-align: center;
+        }
+        .console-hint {
+            background-color: #f0f0f0;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            font-family: monospace;
+        }
+        .grade-info {
+            background-color: #e8f4f8;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .grade-info h3 {
+            margin-top: 0;
+            color: #007bff;
+        }
+        .grade-info ul {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Student Test Score Management System</h1>
+        <p>This page runs the score calculator script.</p>
+        <p>Enter a test score when prompted to see your grade and status!</p>
+        
+        <div class="grade-info">
+            <h3>Grading Scale:</h3>
+            <ul>
+                <li><strong>S:</strong> 100+ points - Super!!</li>
+                <li><strong>A:</strong> 90-99 points - Excellent work!</li>
+                <li><strong>B:</strong> 80-89 points - Good job!</li>
+                <li><strong>C:</strong> 70-79 points - Satisfactory performance.</li>
+                <li><strong>D:</strong> 60-69 points - Needs improvement.</li>
+                <li><strong>F:</strong> Below 60 points - Please try harder!</li>
+            </ul>
+            <p><em>Note: 5 bonus points are automatically added to your score!</em></p>
+        </div>
+        
+        <div class="console-hint">
+            <strong>How to open console:</strong><br>
+            • Windows/Linux: Press F12 or Ctrl+Shift+I<br>
+            • Mac: Press Cmd+Option+I<br>
+            • Then click on the "Console" tab
+        </div>
+    </div>
+    
+    <script src="score.js"></script>
+</body>
+</html>
