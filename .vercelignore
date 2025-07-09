@@ -1,0 +1,10 @@
+# Ignore Korean named files
+*.url
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore development files
+*.log
+.env.local
