@@ -24,5 +24,17 @@
         }
       ]
     }
+  ],
+  "redirects": [
+    {
+      "source": "/profile-generator",
+      "destination": "/day09/profile-generator",
+      "permanent": false
+    },
+    {
+      "source": "/score-calculator",
+      "destination": "/day10/score-calculator",
+      "permanent": false
+    }
   ]
 }
