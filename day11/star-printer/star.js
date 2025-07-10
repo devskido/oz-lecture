@@ -43,7 +43,7 @@ const printReverseStars = function(count) {
 };
 
 console.log("\n--- Challenge: Reverse Stars ---");
-printReverseStars(5);
+printReverseStars(userNum);
 
 
 // 2. 사각형 패턴 출력 (화살표 함수)
@@ -58,7 +58,7 @@ const printSquare = (count) => {
 };
 
 console.log("\n--- Challenge: Square Pattern ---");
-printSquare(4);
+printSquare(userNum);
 
 
 // 3. for...in을 사용한 패턴 출력
