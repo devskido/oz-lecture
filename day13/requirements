@@ -1,0 +1,73 @@
+# 과제 개요
+
+이번 수업에서 **JavaScript 이벤트 처리**와 **DOM 조작**을 배웠습니다. 학생들은 **DOM 구조**, **요소 선택**(`getElementById`, `querySelector`), **DOM 요소 생성/추가/제거**(`createElement`, `appendChild`, `removeChild`), **이벤트 리스너**(`addEventListener`)를 학습했습니다. 이번 과제는 **할 일 목록(To-Do List) 앱**을 제작하는 것으로, HTML과 CSS는 제공되며, JavaScript를 사용하여 동적 기능을 구현합니다. 학생들은 초보자 수준이므로 간단하고 명확한 코드를 작성해야 합니다.
+
+## 기본 과제 요구사항
+
+1. **JavaScript 파일 (dom_assignment.js)**
+    - **목표**: 사용자가 입력한 할 일을 목록에 추가하고, 완료 상태를 토글하거나 삭제할 수 있는 앱을 구현.
+    - **프로그램 흐름**:
+        - 사용자가 입력창에 텍스트 입력 후 "추가" 버튼 클릭 또는 Enter 키 입력 시 할 일 추가.
+        - 각 할 일은 목록(`<ul>`)에 `<li>`로 표시되며, 텍스트와 삭제 버튼 포함.
+        - 할 일 텍스트 클릭 시 완료 상태(밑줄) 토글.
+        - 삭제 버튼 클릭 시 해당 항목 제거.
+        - "전체 삭제" 버튼으로 모든 할 일 제거.
+    - **출력 정보**:
+        - 입력이 비어있을 경우: `alert('할 일을 입력해주세요!')`
+        - 할 일 목록: `<li>`로 표시, 완료 시 `text-decoration: line-through` 적용.
+    - **기능 요구사항**:
+        - **DOM 요소 선택**: `getElementById`로 입력창, 버튼, 목록 요소 선택.
+        - **DOM 조작**:
+            - `createElement`로 `<li>`, `<span>`, `<button>` 생성.
+            - `appendChild`로 요소 추가.
+            - `removeChild`로 삭제 기능 구현.
+        - **이벤트 리스너**:
+            - `addButton`에 `click` 이벤트로 할 일 추가.
+            - `taskInput`에 `keypress` 이벤트로 Enter 키 처리.
+            - 각 할 일의 `<span>`에 `click` 이벤트로 완료 토글.
+            - 각 삭제 버튼에 `click` 이벤트로 항목 제거.
+            - `clearButton`에 `click` 이벤트로 전체 삭제.
+        - **입력 검증**: 입력이 비어있으면 경고 메시지 출력 후 추가 안 함.
+    - **구현 선택**:
+        - CSS 클래스(`completed`, `delete-button`)는 제공된 HTML/CSS 사용.
+        - 입력 검증은 `if`와 `trim()` 사용.
+2. **실행 방법**
+    - 제공된 `index.html`과 `dom_assignment.js`를 같은 폴더에 저장.
+    - 브라우저에서 `index.html` 실행 후 개발자 도구(F12 → Console)로 오류 확인.
+3. **파일 구조**
+    
+    ```
+    todo-app/
+    ├── index.html
+    ├── dom_assignment.js
+    
+    ```
+    
+
+## 도전 과제 (선택)
+
+기본 과제를 완료한 학생들은 추가 기능을 구현하세요.
+
+1. **추가 기능 구현**
+    - **할 일 개수 표시**:
+        - `<div id="taskCount">현재 할 일: 0개</div>`를 `<ul>` 위에 추가.
+        - 할 일이 추가/삭제될 때마다 개수 업데이트.
+    - **querySelector/querySelectorAll 사용**:
+        - 모든 삭제 버튼을 `querySelectorAll('.delete-button')`로 선택해 이벤트 리스너 추가.
+    - **우선순위 표시**:
+        - 입력창 옆에 `<select id="priority"><option value="low">낮음</option><option value="high">높음</option></select>` 추가.
+        - 높은 우선순위(`high`)인 할 일은 빨간색 텍스트로 표시.
+    - **출력 형식**:
+        - 할 일 개수: `현재 할 일: N개`
+        - 높은 우선순위: `<span style="color: red;">할 일</span>`
+2. **도전 과제 파일 구조**
+    - 동일한 `dom_assignment.js`와 `index.html` 수정.
+    - 제출 폴더명: `이름_학번_JavaScript과제_challenge.zip`
+
+## 주의사항
+
+- **JavaScript 문법**: `getElementById`, `querySelector`, `createElement`, `appendChild`, `removeChild`, `addEventListener`, `classList`만 사용. 배열/객체, 반복문은 사용하지 않음.
+- **실행 환경**: 제공된 HTML/CSS 사용, 브라우저에서 실행.
+- **코드 가독성**: 주석(`//`)으로 주요 코드 설명, 들여쓰기 유지.
+- **테스트**: 입력 추가, 완료 토글, 삭제, 전체 삭제 기능 확인.
+- **입력 처리**: `trim()`으로 공백 제거, 비어있는 입력 방지.
