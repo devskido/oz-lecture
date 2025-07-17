@@ -24,11 +24,5 @@
         }
       ]
     }
-  ],
-  "rewrites": [
-    {
-      "source": "/day14/",
-      "destination": "/day14/async-assignment/index.html"
-    }
   ]
 }
