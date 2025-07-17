@@ -37,48 +37,88 @@ function clearCalculator() {
 
 // 숫자 추가 함수
 function appendNumber(number) {
-    // TODO: 아래 로직을 구현하세요
-    // 1. 입력된 number가 유효한 숫자("0"~"9")인지 확인 (힌트: /^[0-9]$/.test(number) 사용)
-    // 2. 유효하지 않으면 showError("유효한 숫자를 입력하세요.") 호출 후 return
-    // 3. currentInput이 "0"이면 number로 교체, 아니면 currentInput에 number 추가
-    // 4. updateDisplay() 호출
+    if (!/^[0-9]$/.test(number)) {
+        showError("유효한 숫자를 입력하세요.");
+        return;
+    }
     
-    // 학생들이 작성할 부분
+    if (currentInput === "0") {
+        currentInput = number;
+    } else {
+        currentInput += number;
+    }
+    
+    updateDisplay();
 }
 
 // 연산자 설정 함수
 function setOperator(op) {
-    // TODO: 아래 로직을 구현하세요
-    // 1. op가 유효한 연산자("+", "-", "*", "/")인지 확인 (힌트: ["+", "-", "*", "/"].includes(op) 사용)
-    // 2. 유효하지 않으면 showError("유효한 연산자를 입력하세요.") 호출 후 return
-    // 3. currentInput이 비어있거나 "0"이면 showError("숫자를 먼저 입력하세요.") 호출 후 return
-    // 4. firstNumber를 Number(currentInput)로 저장
-    // 5. firstNumber가 유효한 숫자인지 확인 (힌트: isNaN(firstNumber) 사용)
-    // 6. operator를 op로 저장
-    // 7. currentInput을 "0"으로 초기화
-    // 8. updateDisplay() 호출
+    if (!["+", "-", "*", "/"].includes(op)) {
+        showError("유효한 연산자를 입력하세요.");
+        return;
+    }
     
-    // 학생들이 작성할 부분
+    if (currentInput === "") {
+        showError("숫자를 먼저 입력하세요.");
+        return;
+    }
+    
+    firstNumber = Number(currentInput);
+    
+    if (isNaN(firstNumber)) {
+        showError("유효한 숫자가 아닙니다.");
+        return;
+    }
+    
+    operator = op;
+    currentInput = "0";
+    updateDisplay();
 }
 
 // 계산 수행 함수
 function calculate() {
-    // TODO: 아래 로직을 구현하세요
-    // 1. firstNumber, operator, currentInput이 모두 존재하는지 확인
-    // 2. 없으면 showError("계산할 값이 없습니다.") 호출 후 return
-    // 3. secondNumber를 Number(currentInput)로 변환
-    // 4. secondNumber가 유효한 숫자인지 확인
-    // 5. 나눗셈인 경우 secondNumber가 0인지 확인, 0이면 showError("0으로 나눌 수 없습니다.") 호출 후 return
-    // 6. switch문으로 operator에 따라 계산 수행
-    // 7. 계산 결과를 result 변수에 저장
-    // 8. showResult(result) 호출
-    // 9. currentInput을 result로 설정
-    // 10. updateDisplay() 호출
-    // 11. 계산 기록을 history 배열에 추가 (객체 형태: { firstNumber, operator, secondNumber, result })
-    // 12. console.log로 history 배열 출력
-    // 13. 계산 후 firstNumber와 operator를 초기화
+    if (firstNumber === null || operator === null || currentInput === "") {
+        showError("계산할 값이 없습니다.");
+        return;
+    }
     
-    // 학생들이 작성할 부분
+    const secondNumber = Number(currentInput);
+    
+    if (isNaN(secondNumber)) {
+        showError("유효한 숫자가 아닙니다.");
+        return;
+    }
+    
+    if (operator === "/" && secondNumber === 0) {
+        showError("0으로 나눌 수 없습니다.");
+        return;
+    }
+    
+    let result;
+    switch (operator) {
+        case "+":
+            result = firstNumber + secondNumber;
+            break;
+        case "-":
+            result = firstNumber - secondNumber;
+            break;
+        case "*":
+            result = firstNumber * secondNumber;
+            break;
+        case "/":
+            result = firstNumber / secondNumber;
+            break;
+    }
+    
+    showResult(result);
+    currentInput = result.toString();
+    updateDisplay();
+    
+    history.push({ firstNumber, operator, secondNumber, result });
+    console.log(history);
+    
+    firstNumber = null;
+    operator = null;
 }
 
 // 초기 디스플레이 업데이트
