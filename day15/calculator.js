@@ -1,3 +1,8 @@
+console.log("Calculator.js starting to load");
+
+// Wrap everything in try-catch
+try {
+    
 // 계산기 상태 변수들
 let currentInput = "0";
 let firstNumber = null;
@@ -139,4 +144,9 @@ function calculate() {
     
     firstNumber = null;
     operator = null;
+}
+
+} catch (error) {
+    console.error("Error in calculator.js:", error);
+    alert("JavaScript error: " + error.message);
 }
