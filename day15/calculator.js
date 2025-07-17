@@ -5,24 +5,39 @@ let operator = null;
 const history = [];
 
 // DOM 요소들
-const display = document.getElementById("display");
-const result = document.getElementById("result");
+let display;
+let result;
+
+// DOM이 로드된 후 요소들을 초기화
+document.addEventListener('DOMContentLoaded', function() {
+    display = document.getElementById("display");
+    result = document.getElementById("result");
+    
+    // 초기 디스플레이 업데이트
+    updateDisplay();
+});
 
 // 디스플레이 업데이트 함수
 function updateDisplay() {
-    display.value = currentInput;
+    if (display) {
+        display.value = currentInput;
+    }
 }
 
 // 에러 메시지 표시 함수
 function showError(message) {
-    result.textContent = `에러: ${message}`;
-    result.classList.add("error");
+    if (result) {
+        result.textContent = `에러: ${message}`;
+        result.classList.add("error");
+    }
 }
 
 // 결과 표시 함수
 function showResult(value) {
-    result.textContent = `결과: ${value}`;
-    result.classList.remove("error");
+    if (result) {
+        result.textContent = `결과: ${value}`;
+        result.classList.remove("error");
+    }
 }
 
 // 계산기 초기화 함수
@@ -30,13 +45,17 @@ function clearCalculator() {
     currentInput = "0";
     firstNumber = null;
     operator = null;
-    result.textContent = "";
-    result.classList.remove("error");
+    if (result) {
+        result.textContent = "";
+        result.classList.remove("error");
+    }
     updateDisplay();
 }
 
 // 숫자 추가 함수
 function appendNumber(number) {
+    console.log("appendNumber called with:", number);
+    
     if (!/^[0-9]$/.test(number)) {
         showError("유효한 숫자를 입력하세요.");
         return;
@@ -48,6 +67,7 @@ function appendNumber(number) {
         currentInput += number;
     }
     
+    console.log("currentInput after append:", currentInput);
     updateDisplay();
 }
 
@@ -120,6 +140,3 @@ function calculate() {
     firstNumber = null;
     operator = null;
 }
-
-// 초기 디스플레이 업데이트
-updateDisplay();
