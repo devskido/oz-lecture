@@ -3,77 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Day 15 - Coming Soon</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            text-align: center;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            color: white;
-        }
-        .container {
-            background: rgba(255,255,255,0.1);
-            padding: 40px;
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-        }
-        h1 {
-            font-size: 3em;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-        .day-number {
-            font-size: 6em;
-            font-weight: bold;
-            margin: 20px 0;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
-        }
-        p {
-            font-size: 1.2em;
-            margin: 20px 0;
-            opacity: 0.9;
-        }
-        .back-btn {
-            display: inline-block;
-            margin-top: 30px;
-            padding: 15px 30px;
-            background: rgba(255,255,255,0.2);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            border: 2px solid rgba(255,255,255,0.3);
-            transition: all 0.3s ease;
-            font-weight: bold;
-        }
-        .back-btn:hover {
-            background: rgba(255,255,255,0.3);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-        .status {
-            background: rgba(255,193,7,0.8);
-            color: #333;
-            padding: 10px 20px;
-            border-radius: 20px;
-            font-weight: bold;
-            display: inline-block;
-            margin: 20px 0;
-        }
-    </style>
+    <title>Day 15 - 계산기</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <div class="day-number">15</div>
-        <h1>Day 15</h1>
-        <div class="status">🚧 준비 중</div>
-        <p>이 과정은 아직 준비 중입니다.<br>
-        곧 멋진 콘텐츠로 찾아뵙겠습니다!</p>
-        <a href="../" class="back-btn">← 메인으로 돌아가기</a>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="calculator">
+                    <h1 class="text-center mb-4">계산기</h1>
+                    
+                    <!-- 디스플레이 -->
+                    <div class="display-container mb-3">
+                        <input type="text" id="display" class="form-control display" value="0" readonly>
+                    </div>
+                    
+                    <!-- 결과 표시 영역 -->
+                    <div id="result" class="result mb-3"></div>
+                    
+                    <!-- 버튼 그리드 -->
+                    <div class="button-grid">
+                        <!-- 첫 번째 줄 -->
+                        <button class="btn btn-secondary" onclick="clearCalculator()">C</button>
+                        <button class="btn btn-light" disabled></button>
+                        <button class="btn btn-light" disabled></button>
+                        <button class="btn btn-warning" onclick="setOperator('/')">÷</button>
+                        
+                        <!-- 두 번째 줄 -->
+                        <button class="btn btn-primary" onclick="appendNumber('7')">7</button>
+                        <button class="btn btn-primary" onclick="appendNumber('8')">8</button>
+                        <button class="btn btn-primary" onclick="appendNumber('9')">9</button>
+                        <button class="btn btn-warning" onclick="setOperator('*')">×</button>
+                        
+                        <!-- 세 번째 줄 -->
+                        <button class="btn btn-primary" onclick="appendNumber('4')">4</button>
+                        <button class="btn btn-primary" onclick="appendNumber('5')">5</button>
+                        <button class="btn btn-primary" onclick="appendNumber('6')">6</button>
+                        <button class="btn btn-warning" onclick="setOperator('-')">-</button>
+                        
+                        <!-- 네 번째 줄 -->
+                        <button class="btn btn-primary" onclick="appendNumber('1')">1</button>
+                        <button class="btn btn-primary" onclick="appendNumber('2')">2</button>
+                        <button class="btn btn-primary" onclick="appendNumber('3')">3</button>
+                        <button class="btn btn-warning" onclick="setOperator('+')">+</button>
+                        
+                        <!-- 다섯 번째 줄 -->
+                        <button class="btn btn-primary btn-zero" onclick="appendNumber('0')">0</button>
+                        <button class="btn btn-success btn-equals" onclick="calculate()">=</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+    
+    <script src="calculator.js"></script>
 </body>
 </html>

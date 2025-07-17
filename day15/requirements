@@ -1,0 +1,92 @@
+### 과제 개요
+
+이번 과제는 제공된 `index.html`, `styles.css`, `calculator.js`를 기반으로 **사칙연산 계산기**를 완성하는 것입니다. 학생들은 `calculator.js`의 `TODO` 주석 부분을 작성하여 사칙연산 로직과 예외 처리를 구현합니다. 기본 과제는 사칙연산과 계산 기록 저장을 구현하며, 도전 과제는 계산 기록 표시 기능과 학생들이 자유롭게 추가한 기능을 포함합니다.
+
+### 기본 과제 요구사항
+
+1. **프로젝트 구조**
+    - 제공된 파일(`index.html`, `styles.css`, `calculator.js`)을 사용하세요.
+    - 학생들은 `calculator.js`의 `TODO` 주석 부분만 수정하여 로직을 완성합니다.
+    - 프로젝트 폴더 구성:
+        
+        ```
+        calculator/
+        ├── index.html
+        ├── styles.css
+        ├── calculator.js
+        
+        ```
+        
+2. **기능 요구사항**
+    - **JavaScript 파일 (`calculator.js`) 수정**:
+        - `appendNumber(number)`:
+            - 입력된 `number`가 유효한 숫자("0"~"9")인지 확인(예: `/^[0-9]$/.test(number)`).
+            - 유효하지 않으면 `showError("유효한 숫자를 입력하세요.")` 호출.
+            - 유효하면 `currentInput`에 숫자 추가, `display` 요소 업데이트.
+        - `setOperator(op)`:
+            - `op`가 유효한 연산자("+", "-", "*", "/")인지 확인(예: `["+", "-", "*", "/"].includes(op)`).
+            - `currentInput`이 비어 있으면 `showError("숫자를 먼저 입력하세요.")` 호출.
+            - `firstNumber`를 `Number(currentInput)`로 저장, 유효성 확인(`isNaN`).
+            - 연산자 저장 후 `currentInput` 초기화, 디스플레이를 "0"으로 설정.
+        - `calculate()`:
+            - `firstNumber`, `operator`, `currentInput` 존재 여부 확인.
+            - `secondNumber`를 `Number(currentInput)`로 변환, 유효성 확인.
+            - 나눗셈에서 `secondNumber`가 0인지 확인.
+            - `switch` 문으로 사칙연산 수행.
+            - 결과를 `result` 요소와 디스플레이에 출력.
+            - 계산 기록을 `history` 배열에 객체로 저장(`{ firstNumber, operator, secondNumber, result }`).
+    - **변수 선언**:
+        - `var`, `let`, `const`를 각각 최소 1회 사용(예: `const operators = ["+", "-", "*", "/"]`, `let currentInput`, `var result`).
+    - **조건문과 연산자**:
+        - `if`/`else` 또는 `switch`로 유효성 검사.
+        - 비교 연산자(`===`, `&&`)와 `isNaN` 사용.
+    - **배열과 객체**:
+        - `history` 배열에 계산 기록 저장.
+    - **DOM 조작**:
+        - `document.getElementById`로 디스플레이와 결과 업데이트.
+        - 에러 시 `showError`로 `result` 요소에 메시지 출력.
+    - **출력 형식**:
+        - 디스플레이: 입력값 또는 결과(예: `5 + 3` → `8`).
+        - 결과 요소: `결과: 8` 또는 `에러: 0으로 나눌 수 없습니다.`.
+        - 콘솔: JSON 형식 계산 기록.
+            
+            ```json
+            [{ "firstNumber": 5, "operator": "+", "secondNumber": 3, "result": 8 }]
+            
+            ```
+            
+3. **실행 방법**
+    - `index.html`을 브라우저에서 열어 테스트.
+    - 숫자, 연산자, 초기화(C), 계산(=) 버튼으로 동작 확인.
+    - 콘솔(F12)에서 계산 기록 확인.
+4. **예시 시나리오**
+    - 입력: `5` → `+` → `3` → `=` → 디스플레이: `8`, 결과: `결과: 8`, 콘솔: `[{ "firstNumber": 5, "operator": "+", "secondNumber": 3, "result": 8 }]`.
+    - 입력: `10` → `/` → `0` → `=` → 결과: `에러: 0으로 나눌 수 없습니다.`.
+
+### 도전 과제 (선택)
+
+1. **추가 기능 구현**
+    - **계산 기록 표시**:
+        - `index.html`에 `<div id="history"></div>` 추가.
+        - `calculate`에서 `history` 배열을 `for` 또는 `while` 루프로 순회하여 기록 표시(예: `5 + 3 = 8`).
+        - 출력 예시:
+            
+            ```
+            기록:
+            5 + 3 = 8
+            10 - 2 = 8
+            
+            ```
+            
+    - **자유 추가 기능**:
+        - 계산기 기능을 확장하는 창의적인 기능을 추가(예: 소수점 지원, 백스페이스, 제곱 연산, 키보드 입력 지원 등).
+        - 추가 기능은 HTML, CSS, JavaScript를 활용해 구현.
+        - 각 기능에 함수 선언문, 표현식, 화살표 함수 중 하나 이상 사용.
+        - 추가된 기능은 주석으로 설명하고, UI와의 연동이 명확해야 함.
+
+### 주의사항
+
+- **제공 코드 수정 제한**: 기본 과제에서는 `index.html`, `styles.css` 수정 금지. `calculator.js`의 `TODO` 부분만 작성. 도전 과제에서는 `index.html`, `styles.css` 수정 가능.
+- **JavaScript 문법**: 변수(`var`, `let`, `const`), 조건문(`if`, `switch`), 반복문(`for`, `while`), 함수, 배열, 객체, DOM 조작만 사용. Node.js, 외부 라이브러리(제공된 Bootstrap 제외) 금지.
+- **예외 처리**: 숫자 유효성, 0으로 나누기, 연산자 유효성, 입력값 없음 처리.
+- **테스트**: 브라우저에서 `index.html` 실행, 기능(입력, 연산, 결과, 기록) 확인
