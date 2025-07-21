@@ -1,0 +1,179 @@
+
+과제 개요
+JSONPlaceholder API를 사용하여 포스트 목록 화면(index.html)에서 포스트 제목 목록을 표시하고, 포스트 클릭 시 상세 화면(detail.html)으로 이동해 제목과 본문을 표시합니다.
+기본 과제:
+index.html: 포스트 목록(<ul id="post-list">)을 표시. 포스트 클릭 시 detail.html?postId=ID로 이동.
+list.js: fetch와 async/await으로 포스트 데이터를 가져와 목록 표시.
+detail.html: 선택한 포스트의 제목과 본문을 표시. "Back to List" 링크로 목록 화면 이동.
+detail.js: URL 파라미터(postId)로 포스트 상세 정보 가져와 표시.
+도전 과제:
+detail.js에 localStorage 캐싱 구현: 포스트 데이터를 post_[id] 키로 저장, 5분 내 캐시 사용, 콘솔에 데이터 소스 출력(예: Post loaded from localStorage 또는 Post fetched from API).
+실행 방법:
+브라우저에서 index.html을 열어 포스트 목록 확인.
+포스트 클릭 후 상세 화면 이동 및 캐싱 동작 확인(콘솔 로그 확인).
+주의사항:
+fetch, async/await, try...catch, localStorage, 기본 DOM 조작, 이벤트 핸들링만 사용.
+코드에 주석 추가, 들여쓰기 유지.
+에러 발생 시 콘솔에 Error: [메시지] 출력(예: Error: Failed to fetch posts).
+posts/
+├── index.html
+├── list.js
+├── detail.html
+├── detail.js
+​
+
+<!-- index.html (포스트 목록 화면) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            max-width: 800px;
+        }
+        h1 {
+            color: #333;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            cursor: pointer;
+        }
+        li {
+            padding: 10px;
+            margin: 5px 0;
+            background: #f9f9f9;
+            border-radius: 5px;
+        }
+        li:hover {
+            background: #e0e0e0;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Post List</h1>
+    <ul id="post-list"></ul>
+    <script src="list.js"></script>
+</body>
+</html>
+
+​
+// list.js (포스트 목록 화면용 JavaScript)
+const apiUrl = "<https://jsonplaceholder.typicode.com>";
+
+// 포스트 목록 표시
+async function displayPosts() {
+    // 포스트 데이터 가져오기
+    try {
+        const response = await fetch(`${apiUrl}/posts`);
+        if (!response.ok) throw new Error("Failed to fetch posts");
+        const posts = await response.json();
+
+        const postList = document.getElementById("post-list");
+        postList.innerHTML = ""; // 기존 목록 초기화
+        posts.forEach(post => {
+            const li = document.createElement("li");
+            li.textContent = post.title;
+            li.dataset.postId = post.id;
+            // 포스트 클릭 시 상세 페이지로 이동
+            li.addEventListener("click", () => {
+                window.location.href = `detail.html?postId=${post.id}`;
+            });
+            postList.appendChild(li);
+        });
+    } catch (error) {
+        console.error("Error:", error.message);
+    }
+}
+
+// 페이지 로드 시 포스트 목록 표시
+displayPosts();
+
+​
+<!-- detail.html (포스트 상세 화면) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Detail</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            max-width: 800px;
+        }
+        h1, h3 {
+            color: #333;
+        }
+        #post-detail {
+            padding: 15px;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        #post-detail h3 {
+            margin-top: 0;
+        }
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #007bff;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Post Detail</h1>
+    <div id="post-detail"></div>
+    <a href="index.html">Back to List</a>
+    <script src="detail.js"></script>
+</body>
+</html>
+
+​
+// detail.js (포스트 상세 화면용 JavaScript)
+const apiUrl = "<https://jsonplaceholder.typicode.com>";
+
+// 포스트 상세 정보 표시
+async function displayPostDetail() {
+    // URL에서 postId 가져오기
+    try {
+        const urlParams = new URLSearchParams(window.location.search);
+        const postId = urlParams.get("postId");
+        if (!postId) throw new Error("No post ID provided");
+        let post = {};
+        
+        // await fetch(`${apiUrl}/posts/${postId}`);
+        
+        // localStorage에서 캐시 확인 (도전 과제)
+        // localStorage에서 캐시가 조건에 충족하면 캐시 사용하여 post 초기화 (도전 과제)
+        // localStorage에서 캐시가 조건에 충족하지 않으면 상세 데이터 fetch하여 post 초기화 
+
+        
+        renderPost(post);
+    } catch (error) {
+        console.error("Error:", error.message);
+        document.getElementById("post-detail").innerHTML = "<p>Error loading post details</p>";
+    }
+}
+
+// 포스트 렌더링 함수
+function renderPost(post) {
+    const postDetail = document.getElementById("post-detail");
+    postDetail.innerHTML = `
+        <h3>${post.title}</h3>
+        <p>${post.body}</p>
+    `;
+}
+
+// 페이지 로드 시 포스트 상세 정보 표시
+displayPostDetail();
